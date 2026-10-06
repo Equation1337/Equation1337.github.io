@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>澜默 · 银灰轶影 ｜ 色彩级收尾人档案</title>
+<meta name="description" content="色彩级收尾人「银灰轶影」澜默的档案：形貌、过往、遗剑与神备。">
+<meta name="theme-color" content="#07080a">
+<meta property="og:title" content="澜默 · 银灰轶影">
+<meta property="og:description" content="色彩级收尾人 · 万川 / 4协会附属事务所">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Cpath d='M16 5 L27 16 L16 27 L5 16 Z' fill='none' stroke='%23a6d6ff' stroke-width='1.6'/%3E%3Cpath d='M16 9 L23 16 L16 23 L9 16 Z' fill='%235f9fd8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ============ tokens ============ */
+:root{
+  --bg:#07080a;
+  --bg2:#0c0e11;
+  --panel:#101317;
+  --panel2:#14181d;
+  --line:#21252b;
+  --line2:#2e343c;
+  --txt:#c4cad2;
+  --dim:#7b828c;
+  --mute:#555b64;
+  --silver:#e2e7ee;
+  --silver2:#98a0ab;
+  --blue:#5f9fd8;
+  --blue-lt:#a6d6ff;
+  --brass:#c2a468;
+  --blood:#8f4a4a;
+  --fx:0;
+  --f-display:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --f-sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  --f-mono:"JetBrains Mono","Cascadia Mono",Consolas,"Sarasa Mono SC",monospace;
+}
+body[data-form="ego"]{
+  --silver:#f2f7ff;
+  --silver2:#a8c2de;
+  --blue:#7bbcff;
+  --blue-lt:#d3ecff;
+  --line2:#3b4a5c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--txt);
+  font-family:var(--f-sans);font-weight:300;
+  font-size:16px;line-height:1.85;letter-spacing:.02em;
+  overflow-x:hidden;
+  transition:background .8s ease;
+}
+body[data-form="ego"]{background:#080a0e}
+::selection{background:rgba(95,159,216,.35);color:#fff}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:600;margin:0;line-height:1.25}
+p{margin:0}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:#08090b}
+::-webkit-scrollbar-thumb{background:#262b32;border:2px solid #08090b;border-radius:9px}
+::-webkit-scrollbar-thumb:hover{background:#39414b}
+
+/* ============ fx overlays ============ */
+.fx{position:fixed;inset:0;pointer-events:none}
+.fx-vig{z-index:180;background:radial-gradient(125% 95% at 50% 38%,transparent 42%,rgba(0,0,0,.62) 100%)}
+.fx-scan{z-index:182;opacity:.5;background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px)}
+.fx-spot{z-index:184;background:radial-gradient(460px 460px at var(--mx,60%) var(--my,25%),rgba(122,172,224,.075),transparent 68%);transition:background .35s ease}
+.fx-grain{z-index:186;opacity:.055;mix-blend-mode:overlay}
+
+/* ============ chrome ============ */
+#bar{position:fixed;top:0;left:0;height:2px;z-index:300;background:linear-gradient(90deg,var(--silver2),var(--blue));width:0}
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  display:flex;align-items:center;gap:26px;
+  padding:14px clamp(18px,4vw,54px);
+  background:linear-gradient(180deg,rgba(7,8,10,.92),rgba(7,8,10,.55) 70%,transparent);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.22em;color:var(--silver)}
+.mark i{width:9px;height:9px;background:var(--blue);box-shadow:0 0 12px var(--blue);display:block;transform:rotate(45deg)}
+.mark span{color:var(--mute)}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav a{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--dim);
+  padding:7px 11px;border:1px solid transparent;transition:.35s;position:relative;white-space:nowrap;
+}
+nav a b{font-weight:400;color:var(--mute);margin-right:6px}
+nav a:hover{color:var(--silver);border-color:var(--line2)}
+nav a.on{color:var(--silver);border-color:var(--line2);background:rgba(255,255,255,.03)}
+nav a.on::after{content:"";position:absolute;left:11px;right:11px;bottom:-1px;height:1px;background:var(--blue);box-shadow:0 0 8px var(--blue)}
+.prog-txt{font-family:var(--f-mono);font-size:11px;color:var(--mute);letter-spacing:.14em}
+
+.rail{
+  position:fixed;left:clamp(14px,2.6vw,32px);top:50%;transform:translateY(-50%);
+  z-index:140;display:flex;flex-direction:column;gap:14px;align-items:center;
+}
+.rail .dot{width:7px;height:7px;border:1px solid var(--line2);transform:rotate(45deg);transition:.4s}
+.rail .dot.on{background:var(--blue);border-color:var(--blue);box-shadow:0 0 10px var(--blue)}
+.rail .rl{writing-mode:vertical-rl;font-family:var(--f-mono);font-size:10px;letter-spacing:.42em;color:var(--mute);margin-top:8px}
+
+/* ============ layout ============ */
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+section{position:relative;padding:clamp(76px,10vw,140px) 0}
+.eyebrow{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.3em;color:var(--mute);
+  display:flex;align-items:center;gap:12px;margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--line2)}
+.eyebrow em{font-style:normal;color:var(--blue);opacity:.85}
+.rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:24px 0}
+.tick{height:7px;background-image:linear-gradient(90deg,var(--line) 0 1px,transparent 1px 22px);background-size:22px 1px;opacity:.85}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* ============ hero ============ */
+#hero{min-height:100svh;display:flex;align-items:center;padding-top:120px;padding-bottom:60px}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,4vw,64px);align-items:center;width:100%}
+.hero-l{position:relative;z-index:2}
+.badge{
+  display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line2);
+  padding:6px 14px;font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--silver2);
+  background:rgba(255,255,255,.02);margin-bottom:26px;
+}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue)}
+h1.name{
+  font-size:clamp(76px,15vw,190px);line-height:.86;letter-spacing:.04em;
+  background:linear-gradient(168deg,#ffffff 0%,#dfe4ea 32%,#8d949e 72%,#5b616a 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin:0 0 6px;filter:drop-shadow(0 10px 34px rgba(0,0,0,.6));
+}
+.romaji{font-family:var(--f-mono);font-size:clamp(11px,1.2vw,13px);letter-spacing:.62em;color:var(--mute);margin-bottom:26px}
+.title-line{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.title-line h2{
+  font-size:clamp(26px,3.4vw,40px);letter-spacing:.16em;color:var(--silver);
+  text-shadow:0 0 34px rgba(124,175,230,.28);
+}
+.title-line .rank{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--brass);
+  border:1px solid rgba(194,164,104,.4);padding:5px 9px;background:rgba(194,164,104,.06);
+}
+.lede{color:var(--dim);max-width:46ch;font-size:15.5px}
+.lede b{color:var(--silver2);font-weight:400}
+blockquote{
+  margin:28px 0 0;padding:0 0 0 18px;border-left:2px solid var(--line2);
+  font-family:var(--f-display);font-size:clamp(17px,1.9vw,22px);color:var(--silver2);line-height:1.7;
+}
+blockquote span{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.24em;color:var(--mute);margin-top:10px}
+.stats{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.stats div{padding:14px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);flex:1 1 130px}
+.stats dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--mute);margin-bottom:6px}
+.stats dd{margin:0;font-family:var(--f-display);font-size:16px;color:var(--silver)}
+
+/* portrait plate */
+.plate{position:relative;width:100%;aspect-ratio:3/4;max-width:520px;margin-left:auto}
+.plate-in{
+  position:absolute;inset:0;overflow:hidden;
+  background:
+    radial-gradient(70% 55% at 50% 30%,rgba(95,159,216,.10),transparent 70%),
+    linear-gradient(170deg,#12151a,#08090b 70%);
+  border:1px solid var(--line);
+}
+body[data-form="ego"] .plate-in{
+  background:
+    radial-gradient(72% 58% at 50% 28%,rgba(123,188,255,.20),transparent 72%),
+    linear-gradient(170deg,#141a22,#080a0e 70%);
+}
+.plate-in::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:6;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55))}
+.corner{position:absolute;width:16px;height:16px;border:1px solid var(--line2);z-index:6}
+.corner.tl{top:9px;left:9px;border-right:0;border-bottom:0}
+.corner.tr{top:9px;right:9px;border-left:0;border-bottom:0}
+.corner.bl{bottom:9px;left:9px;border-right:0;border-top:0}
+.corner.br{bottom:9px;right:9px;border-left:0;border-top:0}
+.plate-tag{
+  position:absolute;z-index:7;font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--dim);
+}
+.plate-tag.tl{top:20px;left:22px}
+.plate-tag.br{bottom:20px;right:22px;text-align:right}
+.plate-tag .num{color:var(--silver2)}
+.figure{position:absolute;inset:0;width:100%;height:100%;z-index:3}
+.plate-lbl{
+  position:absolute;left:22px;bottom:20px;z-index:7
+}
+.plate-lbl strong{
+  display:block;font-family:var(--f-display);font-size:22px;color:var(--silver);letter-spacing:.1em
+}
+.plate-lbl em{font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.22em;color:var(--mute)}
+
+/* figure state — driven by inherited CSS vars so the same states apply
+   both to a normal inline <svg> and through a <use> shadow tree */
+.figure{--kf:1;--sc:.85;--hl:0;--eg:0;--eh:0}
+body[data-form="ego"] .figure{--kf:0;--sc:0;--hl:1;--eg:1;--eh:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* ===== portrait drop-in (assets/portrait.png, assets/portrait-ego.png) ===== */
+.portrait-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;
+  z-index:5;transition:opacity .9s ease;
+}
+.portrait-img.ego{opacity:0}
+body[data-form="ego"] .portrait-img.ordinary{opacity:0}
+body[data-form="ego"] .portrait-img.ego{opacity:1}
+/* if the EGO art is absent, keep the ordinary art visible in EGO state */
+body[data-form="ego"]:has(.portrait-img.ego.missing) .portrait-img.ordinary{opacity:1}
+.portrait-img.missing{display:none}
+/* 神备：即使换成你自己的立绘，也会叠加一层可见的银蓝辉光，保证切换有反馈。
+   刻意做成“边缘强、中心透”，避免糊住人物面部。 */
+.ego-overlay{
+  position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;transition:opacity .9s ease;
+  background:
+    radial-gradient(72% 58% at 50% 36%,transparent 34%,rgba(150,205,255,.16) 72%,rgba(160,210,255,.30) 100%),
+    linear-gradient(180deg,rgba(150,205,255,.14),transparent 20%);
+  mix-blend-mode:screen;
+}
+.ego-ring{
+  position:absolute;left:50%;top:26%;width:70%;aspect-ratio:1/1;transform:translate(-50%,-50%);
+  z-index:5;pointer-events:none;opacity:0;transition:opacity .9s ease;
+  border:1px solid rgba(159,210,255,.55);border-radius:50%;
+  box-shadow:0 0 60px rgba(123,188,255,.35) inset,0 0 40px rgba(123,188,255,.2);
+}
+body[data-form="ego"] .ego-overlay{opacity:1}
+body[data-form="ego"] .ego-ring{opacity:1;animation:ringpulse 4.2s ease-in-out infinite}
+@keyframes ringpulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.55}50%{transform:translate(-50%,-50%) scale(1.06);opacity:.95}}
+/* 形态名称角标加一点状态色，切换时更醒目 */
+body[data-form="ego"] .plate-lbl strong{color:var(--blue-lt)}
+
+
+/* ============ section heads ============ */
+.shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(34px,5vw,60px)}
+.shead h2{font-size:clamp(30px,4.6vw,54px);letter-spacing:.1em;color:var(--silver);position:relative}
+.shead .cn{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.34em;color:var(--blue);margin-bottom:14px;font-weight:400}
+.shead .note{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--mute);max-width:34ch;text-align:right;line-height:2}
+
+/* ============ profile ============ */
+.prof{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,64px);align-items:start}
+.bio p+p{margin-top:18px}
+.bio p{color:var(--dim)}
+.bio .lead{font-family:var(--f-display);font-size:clamp(18px,2.1vw,23px);color:var(--silver2);line-height:1.85}
+.bio strong{color:var(--silver);font-weight:400;border-bottom:1px solid var(--line2)}
+.kv{border-top:1px solid var(--line)}
+.kv div{display:grid;grid-template-columns:104px 1fr;gap:18px;padding:15px 2px;border-bottom:1px solid var(--line)}
+.kv dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;color:var(--mute);padding-top:5px}
+.kv dd{margin:0;color:var(--txt)}
+.kv dd .sm{display:block;font-size:12.5px;color:var(--mute);margin-top:3px}
+.redact{font-family:var(--f-mono);color:var(--mute);letter-spacing:-1px}
+.tag-bl{color:var(--blue-lt)}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--silver2);
+  border:1px solid var(--line2);padding:6px 11px;background:rgba(255,255,255,.02);
+  display:flex;align-items:center;gap:8px;
+}
+.chip s{width:5px;height:5px;background:var(--blue);display:block;text-decoration:none;opacity:.8}
+
+/* ============ toggle ============ */
+.toggle{
+  display:inline-flex;border:1px solid var(--line2);background:rgba(255,255,255,.02);
+  position:relative;padding:3px;
+}
+.toggle button{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--dim);
+  padding:9px 20px;transition:.35s;position:relative;z-index:2;white-space:nowrap;
+}
+.toggle button em{font-style:normal;display:block;font-size:9.5px;letter-spacing:.18em;color:var(--mute);margin-top:2px}
+.toggle button:hover{color:var(--silver)}
+.toggle button.on{color:#07080a}
+.toggle button.on em{color:rgba(7,8,10,.6)}
+.toggle .thumb{
+  position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);
+  background:linear-gradient(180deg,var(--silver),var(--silver2));
+  transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:1;
+}
+.toggle[data-n="2"][data-i="1"] .thumb{transform:translateX(100%)}
+body[data-form="ego"] .toggle .thumb{background:linear-gradient(180deg,#dcefff,#8fc4f5);box-shadow:0 0 22px rgba(123,188,255,.5)}
+
+.hint{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--mute);margin-top:14px}
+
+/* ============ appearance ============ */
+.appear{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,4vw,64px);align-items:center}
+.spec{border-top:1px solid var(--line)}
+.spec .row{display:grid;grid-template-columns:112px 1fr;gap:18px;padding:16px 2px;border-bottom:1px solid var(--line);transition:.6s}
+.spec .row dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;color:var(--mute);padding-top:5px}
+.spec .row dd{margin:0;color:var(--txt);font-size:15px}
+.spec .row dd b{color:var(--silver);font-weight:400}
+.pane{display:grid}
+.pane>*{grid-area:1/1;transition:opacity .7s ease,transform .7s ease}
+.pane[data-p="1"]>*:first-child,.pane[data-p="0"]>*:last-child{opacity:0;transform:translateY(12px);pointer-events:none}
+.pane[data-p="1"]>*:last-child,.pane[data-p="0"]>*:first-child{opacity:1;transform:none}
+
+.egonote{
+  margin-top:26px;border:1px solid var(--line2);border-left:2px solid var(--blue);
+  padding:18px 22px;background:linear-gradient(90deg,rgba(95,159,216,.07),transparent);
+  font-family:var(--f-display);color:var(--silver2);font-size:16px;line-height:1.8;
+}
+.egonote b{color:var(--blue-lt);font-weight:400}
+
+/* ============ timeline ============ */
+.tl{position:relative}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line);transform:translateX(-.5px)}
+.tl .fill{position:absolute;left:50%;top:0;width:1px;height:0;background:linear-gradient(180deg,var(--blue),var(--silver2));transform:translateX(-.5px);box-shadow:0 0 12px rgba(95,159,216,.5);z-index:2}
+.node{position:relative;display:grid;grid-template-columns:1fr 74px 1fr;align-items:start;margin-bottom:clamp(20px,3vw,38px)}
+.node .dotlin{display:flex;justify-content:center;padding-top:26px}
+.node .d{width:9px;height:9px;background:var(--bg);border:1px solid var(--line2);transform:rotate(45deg);z-index:3;transition:.5s}
+.node.in .d{border-color:var(--blue);background:var(--blue);box-shadow:0 0 14px rgba(95,159,216,.85)}
+.node .card{
+  border:1px solid var(--line);padding:20px 24px;background:linear-gradient(160deg,rgba(255,255,255,.022),transparent);
+  transition:.5s;position:relative;
+}
+.node .card:hover{border-color:var(--line2);background:linear-gradient(160deg,rgba(255,255,255,.04),transparent)}
+.node .kk{font-family:var(--f-mono);font-size:10px;letter-spacing:.22em;color:var(--mute);margin-bottom:9px;display:block}
+.node h3{font-size:clamp(18px,2.2vw,23px);color:var(--silver);letter-spacing:.08em;margin-bottom:9px}
+.node p{color:var(--dim);font-size:14.5px;line-height:1.8}
+.node.l .card{grid-column:1;text-align:right}
+.node.l .card .kk{justify-content:flex-end}
+.node.r .card{grid-column:3}
+.node .card::after{content:"";position:absolute;top:32px;width:26px;height:1px;background:var(--line2)}
+.node.l .card::after{right:-27px}
+.node.r .card::after{left:-27px}
+.node.r.late h3{color:var(--blue-lt)}
+.node.hi .card{border-color:rgba(194,164,104,.34);background:linear-gradient(160deg,rgba(194,164,104,.06),transparent)}
+.node.hi h3{color:var(--brass)}
+.node.fin .card{border-color:rgba(95,159,216,.4);background:linear-gradient(160deg,rgba(95,159,216,.09),transparent);box-shadow:0 0 50px rgba(95,159,216,.09)}
+.node.fin h3{color:var(--blue-lt);letter-spacing:.18em}
+
+/* ============ sword ============ */
+.sword-wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,56px);align-items:center}
+.sword-stage{
+  position:relative;border:1px solid var(--line);padding:clamp(18px,3vw,34px);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.02),transparent),
+    radial-gradient(80% 100% at 20% 50%,rgba(95,159,216,.07),transparent 70%),
+    #0a0c0f;
+  min-height:clamp(300px,38vw,430px);display:grid;place-items:center;overflow:hidden;
+}
+.grid-bg{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent)}
+.arm-svg{position:relative;z-index:2;width:100%}
+.arm-svg>*{grid-area:1/1}
+.arm-svg{display:grid}
+.arm-svg .st{transition:opacity .6s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.sword-stage[data-arm="1"] .st-a,.sword-stage[data-arm="0"] .st-b{opacity:0;transform:scale(.94) translateX(-14px);pointer-events:none}
+.bp path,.bp line,.bp rect,.bp circle{transition:.4s}
+.mono-cap{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--mute)}
+.armtag{position:absolute;top:16px;left:18px;z-index:4}
+.armtag b{display:block;font-family:var(--f-display);font-size:19px;color:var(--silver);letter-spacing:.14em}
+.armtag em{font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--mute)}
+.rot{position:absolute;right:18px;bottom:16px;z-index:4;text-align:right}
+/* ===== sword art drop-in (assets/sword.png, assets/sword-gun.png) =====
+   Sits above the SVG; when a file is absent it hides and the SVG shows through. */
+.arm-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:3;
+  padding:clamp(16px,3vw,34px);pointer-events:none;transition:opacity .55s ease;
+}
+.arm-img.gun{opacity:0}
+#stage[data-arm="1"] .arm-img.blade{opacity:0}
+#stage[data-arm="1"] .arm-img.gun{opacity:1}
+#stage[data-arm="1"]:has(.arm-img.gun.missing) .arm-img.blade{opacity:1}
+.arm-img.missing{display:none}
+
+/* ============ ego ============ */
+#ego{text-align:center}
+.ego-quote{
+  font-family:var(--f-display);font-size:clamp(22px,3.5vw,44px);line-height:1.6;color:var(--silver);
+  letter-spacing:.04em;max-width:22ch;margin:0 auto;text-shadow:0 0 60px rgba(123,188,255,.24);
+}
+.ego-quote em{font-style:normal;color:var(--blue-lt)}
+.ego-sub{color:var(--dim);max-width:56ch;margin:30px auto 0;font-size:15.5px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:clamp(40px,6vw,72px);border:1px solid var(--line)}
+.pillars div{background:var(--bg);padding:clamp(26px,3.4vw,44px) 22px}
+.pillars b{font-family:var(--f-display);font-size:clamp(28px,4vw,44px);color:var(--silver);display:block;letter-spacing:.14em}
+.pillars i{font-style:normal;display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.22em;color:var(--blue);margin:12px 0 10px}
+.pillars p{color:var(--mute);font-size:13.5px}
+.ego-rings{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(760px,95vw);opacity:.5;pointer-events:none;z-index:0}
+.ego-rings circle{fill:none;stroke:var(--line2)}
+.ego-rings .p{animation:spin 60s linear infinite;transform-origin:center;stroke-dasharray:2 12}
+
+/* ============ footer ============ */
+footer{border-top:1px solid var(--line);padding:clamp(56px,8vw,96px) 0 60px;position:relative}
+.memo{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(26px,4vw,60px);align-items:end}
+.memo h3{font-size:clamp(26px,4vw,44px);color:var(--silver);letter-spacing:.16em;line-height:1.5}
+.memo h3 em{font-style:normal;color:var(--mute);font-size:.5em;display:block;letter-spacing:.3em;font-family:var(--f-mono);margin-bottom:18px}
+.memo p{color:var(--mute);font-size:13.5px;line-height:2.1}
+.fmeta{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:56px;padding-top:22px;border-top:1px solid var(--line)}
+.fmeta span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;color:var(--mute)}
+
+/* ============ responsive ============ */
+@media (max-width:1020px){
+  .hero-grid,.prof,.appear,.sword-wrap,.memo{grid-template-columns:1fr}
+  .plate{margin:0 auto;width:100%}
+  .rail{display:none}
+  .shead .note{text-align:left}
+}
+@media (max-width:760px){
+  .topbar{padding:11px 16px;gap:14px}
+  nav{gap:0}
+  nav a{padding:6px 8px;font-size:10px}
+  nav a b{display:none}
+  .prog-txt{display:none}
+  .stats div{flex:1 1 45%}
+  .tl::before,.tl .fill{left:8px}
+  .node{grid-template-columns:26px 1fr;gap:0 16px}
+  .node .dotlin{grid-column:1;padding-top:24px;justify-content:flex-start}
+  .node.l .card,.node.r .card{grid-column:2;text-align:left}
+  .node .card::after{display:none}
+  .pillars{grid-template-columns:1fr}
+  h1.name{font-size:clamp(64px,22vw,110px)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body data-form="ordinary">
+<a id="bar"></a>
+
+<!-- fx -->
+<div class="fx fx-vig"></div>
+<div class="fx fx-scan"></div>
+<div class="fx fx-spot" id="spot"></div>
+<svg class="fx fx-grain" aria-hidden="true"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg>
+
+<!-- ============ portrait source (rendered twice via <use>) ============ -->
+<svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">
+<symbol id="portrait" viewBox="0 0 420 560" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hairG" x1=".2" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#f6f8fb"/><stop offset=".5" stop-color="#ccd2da"/><stop offset="1" stop-color="#8b939e"/>
+    </linearGradient>
+    <linearGradient id="hairF" x1=".2" y1="0" x2=".6" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#d6dbe2"/><stop offset="1" stop-color="#9ea6b1"/>
+    </linearGradient>
+    <linearGradient id="faceG" x1="0" y1="0" x2=".15" y2="1">
+      <stop offset="0" stop-color="#d3cec9"/><stop offset="1" stop-color="#a8a29d"/>
+    </linearGradient>
+    <linearGradient id="coatG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#262c34"/><stop offset=".45" stop-color="#14181d"/><stop offset="1" stop-color="#0b0d10"/>
+    </linearGradient>
+    <linearGradient id="shirtG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eceef1"/><stop offset="1" stop-color="#c9ccd1"/>
+    </linearGradient>
+    <linearGradient id="earG" x1=".3" y1="1" x2=".7" y2="0">
+      <stop offset="0" stop-color="#d9dfe7"/><stop offset=".5" stop-color="#7d8590"/><stop offset="1" stop-color="#33383f"/>
+    </linearGradient>
+    <radialGradient id="eyeG" cx=".4" cy=".35" r=".8">
+      <stop offset="0" stop-color="#e8f6ff"/><stop offset=".42" stop-color="#63a8e0"/><stop offset="1" stop-color="#173d5e"/>
+    </radialGradient>
+    <radialGradient id="haloG" cx=".5" cy=".42" r=".6">
+      <stop offset="0" stop-color="#7bbcff" stop-opacity=".55"/><stop offset="1" stop-color="#7bbcff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="healG" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#dff1ff" stop-opacity=".9"/><stop offset="1" stop-color="#dff1ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="crystalG" cx=".35" cy=".3" r=".85">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#8fd0ff"/><stop offset="1" stop-color="#2a6ba8"/>
+    </radialGradient>
+    <filter id="blur8" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="blur4" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+
+  <!-- EGO aura -->
+  <g style="opacity:var(--eg,0);transition:opacity .9s ease">
+    <circle cx="210" cy="240" r="196" fill="url(#haloG)"/>
+    <circle cx="210" cy="236" r="150" fill="none" stroke="#8fc7f5" stroke-width="1" opacity=".45"/>
+    <circle cx="210" cy="236" r="168" fill="none" stroke="#9fd2ff" stroke-width="1" stroke-dasharray="2 11" opacity=".6">
+      <animateTransform attributeName="transform" type="rotate" from="0 210 236" to="360 210 236" dur="46s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <ellipse cx="210" cy="548" rx="150" ry="26" fill="#000" opacity=".5" filter="url(#blur8)"/>
+
+  <!-- ears (rim-lit so they read against the dark plate) -->
+  <g>
+    <path d="M136 74 C132 110 118 144 108 168 C136 170 166 165 184 159 C177 122 156 97 136 74 Z" fill="url(#earG)" stroke="#c3ccd8" stroke-width="1.7"/>
+    <path d="M137 94 C133 118 124 142 118 158 C137 159 157 156 169 151 C164 125 150 106 137 94 Z" fill="#20242b" stroke="#606a76" stroke-width=".9"/>
+    <path d="M148 106 C142 128 134 146 126 158" stroke="#6f7986" stroke-width="1.2" fill="none" opacity=".8"/>
+    <path d="M160 112 C155 132 149 148 144 158" stroke="#6f7986" stroke-width="1" fill="none" opacity=".6"/>
+    <path d="M284 74 C288 110 302 144 312 168 C284 170 254 165 236 159 C243 122 264 97 284 74 Z" fill="url(#earG)" stroke="#c3ccd8" stroke-width="1.7"/>
+    <path d="M283 94 C287 118 296 142 302 158 C283 159 263 156 251 151 C256 125 270 106 283 94 Z" fill="#20242b" stroke="#606a76" stroke-width=".9"/>
+    <path d="M272 106 C278 128 286 146 294 158" stroke="#6f7986" stroke-width="1.2" fill="none" opacity=".8"/>
+    <path d="M260 112 C265 132 271 148 276 158" stroke="#6f7986" stroke-width="1" fill="none" opacity=".6"/>
+  </g>
+
+  <!-- back hair -->
+  <path d="M210 110 C302 110 330 178 322 256 C316 308 307 338 301 360 L270 353 C281 308 288 262 284 232 C278 187 252 163 210 163 C168 163 142 187 136 232 C132 262 139 308 150 353 L119 360 C113 338 104 308 98 256 C90 178 118 110 210 110 Z" fill="url(#hairG)"/>
+
+  <!-- neck -->
+  <path d="M182 298 L182 372 C182 386 238 386 238 372 L238 298 Z" fill="#a8a29d"/>
+  <path d="M182 298 L238 298 L238 330 C219 344 200 344 182 330 Z" fill="#7c7671" opacity=".55"/>
+
+  <!-- face -->
+  <path d="M210 152 C256 152 284 188 284 240 C284 294 262 343 210 351 C158 343 136 294 136 240 C136 188 164 152 210 152 Z" fill="url(#faceG)"/>
+  <path d="M210 152 C256 152 284 188 284 240 C284 294 262 343 210 351 Z" fill="#6f6a66" opacity=".16"/>
+
+  <!-- healed cheek (EGO) -->
+  <ellipse cx="262" cy="288" rx="42" ry="36" fill="url(#healG)" style="opacity:var(--hl,0);transition:opacity .9s ease"/>
+
+  <!-- brows -->
+  <path d="M156 227 C168 218 189 219 199 227" stroke="#aeb6c0" stroke-width="4.6" stroke-linecap="round" fill="none" opacity=".9"/>
+  <path d="M264 227 C252 218 231 219 221 227" stroke="#aeb6c0" stroke-width="4.6" stroke-linecap="round" fill="none" opacity=".9"/>
+
+  <!-- eyes -->
+  <g>
+    <path d="M157 254 C166 239 191 239 199 254 C191 267 166 267 157 254 Z" fill="#eef2f7"/>
+    <circle cx="178" cy="253" r="11.2" fill="url(#eyeG)"/>
+    <circle cx="178" cy="253" r="4.6" fill="#0a1725"/>
+    <circle cx="174" cy="248" r="3" fill="#eaf6ff" opacity=".92"/>
+    <path d="M154 252 C166 234 192 234 202 252" stroke="#1f2126" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+    <path d="M160 258 C168 266 190 266 197 258" stroke="#8e8782" stroke-width="1.8" fill="none" opacity=".6"/>
+
+    <path d="M263 254 C254 239 229 239 221 254 C229 267 254 267 263 254 Z" fill="#eef2f7"/>
+    <circle cx="242" cy="253" r="11.2" fill="url(#eyeG)"/>
+    <circle cx="242" cy="253" r="4.6" fill="#0a1725"/>
+    <circle cx="238" cy="248" r="3" fill="#eaf6ff" opacity=".92"/>
+    <path d="M266 252 C254 234 228 234 218 252" stroke="#1f2126" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+    <path d="M260 258 C252 266 230 266 223 258" stroke="#8e8782" stroke-width="1.8" fill="none" opacity=".6"/>
+  </g>
+  <g style="opacity:var(--eh,0);transition:opacity .9s ease">
+    <circle cx="178" cy="253" r="15" fill="#8fd0ff" opacity=".55" filter="url(#blur4)"/>
+    <circle cx="242" cy="253" r="15" fill="#8fd0ff" opacity=".55" filter="url(#blur4)"/>
+  </g>
+
+  <!-- nose / mouth -->
+  <path d="M205 284 C210 291 215 292 217 289" stroke="#8a837e" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M198 313 C206 320 216 320 224 313" stroke="#877974" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+
+  <!-- scar on the left cheek -->
+  <g style="opacity:var(--sc,.85);transition:opacity .9s ease">
+    <path d="M267 264 C262 282 258 296 253 310" stroke="#9c5f5f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M258 277 L271 272" stroke="#9c5f5f" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+    <path d="M255 291 L268 287" stroke="#9c5f5f" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- triangular kerchief covering it -->
+  <g style="opacity:var(--kf,1);transition:opacity .9s ease">
+    <path d="M238 322 C248 300 271 266 289 244 L302 253 C284 275 260 306 250 331 Z" fill="#262a31" stroke="#3d434c" stroke-width="1.4"/>
+    <path d="M290 246 C299 237 306 233 313 233 C306 240 302 247 300 254 Z" fill="#2b3037" stroke="#3d434c" stroke-width="1.2"/>
+    <path d="M249 313 C259 293 279 266 295 249" stroke="#3a4049" stroke-width="1" fill="none" opacity=".85"/>
+  </g>
+
+  <!-- front hair -->
+  <path d="M134 240 C126 178 156 137 210 137 C264 137 294 178 286 240 C282 213 268 193 256 185 C250 206 238 216 226 209 C220 226 203 232 193 217 C185 232 169 227 163 211 C151 221 139 230 134 240 Z" fill="url(#hairF)"/>
+  <path d="M136 226 C124 272 126 314 138 351 C147 345 149 320 147 300 C145 274 147 246 153 228 Z" fill="url(#hairG)"/>
+  <path d="M284 226 C296 272 294 314 282 351 C273 345 271 320 273 300 C275 274 273 246 267 228 Z" fill="url(#hairG)"/>
+
+  <!-- shirt -->
+  <path d="M174 352 L210 430 L246 352 L246 502 L174 502 Z" fill="url(#shirtG)"/>
+
+  <!-- coat -->
+  <path d="M44 560 C46 486 76 428 138 396 L178 372 L214 452 L214 560 Z" fill="url(#coatG)"/>
+  <path d="M376 560 C374 486 344 428 282 396 L242 372 L206 452 L206 560 Z" fill="url(#coatG)"/>
+  <path d="M178 372 L214 452" stroke="#2b3138" stroke-width="1.3" fill="none"/>
+  <path d="M242 372 L206 452" stroke="#2b3138" stroke-width="1.3" fill="none"/>
+  <!-- rim light along the shoulders so the dark coat separates from the plate -->
+  <path d="M44 560 C46 486 76 428 138 396 L178 372" fill="none" stroke="#77818f" stroke-width="1.8" opacity=".8"/>
+  <path d="M376 560 C374 486 344 428 282 396 L242 372" fill="none" stroke="#77818f" stroke-width="1.8" opacity=".8"/>
+  <path d="M138 396 C160 386 178 378 190 374" fill="none" stroke="#9aa4b2" stroke-width="1" opacity=".6"/>
+  <path d="M282 396 C260 386 242 378 230 374" fill="none" stroke="#9aa4b2" stroke-width="1" opacity=".6"/>
+  <path d="M178 357 L143 388 L190 453 L207 420 Z" fill="#1d2127" stroke="#2f353d" stroke-width="1"/>
+  <path d="M242 357 L277 388 L230 453 L213 420 Z" fill="#1d2127" stroke="#2f353d" stroke-width="1"/>
+
+  <!-- blue crystal necklace -->
+  <path d="M187 366 C197 392 223 392 233 366" stroke="#4b525b" stroke-width="1.8" fill="none"/>
+  <path d="M210 412 L227 431 L210 452 L193 431 Z" fill="url(#crystalG)" filter="url(#blur4)" opacity=".8"/>
+  <path d="M210 412 L227 431 L210 452 L193 431 Z" fill="url(#crystalG)" stroke="#bfe4ff" stroke-width=".8"/>
+  <path d="M210 412 L210 452" stroke="#eaf6ff" stroke-width=".7" opacity=".7"/>
+</symbol>
+</svg>
+
+<!-- chrome -->
+<header class="topbar">
+  <a class="mark" href="index.html"><i></i>LAN MO <span>/ 银灰轶影</span></a>
+  <nav id="nav">
+    <a href="index.html"><b>&larr;</b>主页</a>
+    <a href="#profile"><b>01</b>档案</a>
+    <a href="#appearance"><b>02</b>形貌</a>
+    <a href="#past"><b>03</b>过往</a>
+    <a href="#sword"><b>04</b>遗剑</a>
+    <a href="#ego"><b>05</b>神备</a>
+  </nav>
+  <div class="prog-txt" id="pt">00%</div>
+</header>
+
+<aside class="rail" id="rail">
+  <span class="dot" data-t="#hero"></span>
+  <span class="dot" data-t="#profile"></span>
+  <span class="dot" data-t="#appearance"></span>
+  <span class="dot" data-t="#past"></span>
+  <span class="dot" data-t="#sword"></span>
+  <span class="dot" data-t="#ego"></span>
+  <span class="rl">CITY / ARCHIVE</span>
+</aside>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-l">
+      <div class="badge rv"><i></i>COLOR FIXER · FILE NO. LM-000</div>
+      <h1 class="name rv" style="--d:.05s">澜默</h1>
+      <div class="romaji rv" style="--d:.1s">L A N &nbsp; M O</div>
+      <div class="title-line rv" style="--d:.15s">
+        <h2>银灰轶影</h2>
+        <span class="rank">色彩级收尾人</span>
+      </div>
+      <div class="rule rv" style="--d:.2s"></div>
+      <p class="lede rv" style="--d:.24s">
+        银渐层，男。白发，耳部生有黑银相间的绒毛；双眸湛蓝，左颊留着一道疤痕，
+        常以一条三角巾遮掩。颈间的蓝水晶，是母亲赠予的成人礼，也是她留下的最后念想。
+        随身的长剑由祈源工坊打造、可变形为枪械 —— 那是挚友宇耀的遗物。<br><br>
+        所属 <b>万川</b> · 4协会附属事务所。
+      </p>
+      <blockquote class="rv" style="--d:.3s">
+        剑不离身。
+        <span>SINCE THE DAY HE LEFT IT TO ME</span>
+      </blockquote>
+      <dl class="stats rv" style="--d:.36s">
+        <div><dt>EVALUATION</dt><dd>色彩级</dd></div>
+        <div><dt>OFFICE</dt><dd>万川</dd></div>
+        <div><dt>WORKSHOP</dt><dd>祈源工坊</dd></div>
+        <div><dt>RACE</dt><dd>银渐层</dd></div>
+      </dl>
+    </div>
+
+    <div class="plate rv" style="--d:.2s">
+      <div class="plate-in"><img class="portrait-img ordinary" src="assets/portrait.png" alt="澜默 普通形态立绘" onerror="this.classList.add('missing')"><img class="portrait-img ego" src="assets/portrait-ego.png" alt="澜默 神备形态立绘" onerror="this.classList.add('missing')"><span class="ego-overlay" aria-hidden="true"></span><span class="ego-ring" aria-hidden="true"></span>
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <span class="plate-tag tl">PLATE <span class="num">01</span> / 澜默</span>
+        <span class="plate-tag br">STATUS<br><span class="num">ACTIVE</span></span>
+        <div class="plate-lbl">
+          <strong id="heroFormName">普通形态</strong>
+          <em id="heroFormEn">ORDINARY</em>
+        </div>
+        <!-- portrait -->
+          <svg class="figure" viewBox="0 0 420 560" preserveAspectRatio="xMidYMid slice" role="img" aria-label="澜默立绘">
+            <use href="#portrait" width="420" height="560"/>
+          </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 PROFILE ===== -->
+<section id="profile">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">SECTION 01 — PROFILE</span>档案</h2>
+      <p class="note">档案由万川事务所整理<br>最后更新：<span class="redact">████</span></p>
+    </div>
+    <div class="prof">
+      <div class="bio rv">
+        <p class="lead">
+          澜默生于「<strong>巢</strong>」中，却遭遗弃，流落至暗无天日的「<strong>后巷</strong>」。
+          幸运的是，一位善良的<strong>五阶收尾人</strong>收养了他，给了他一个温暖的家。
+        </p>
+        <p>
+          十八岁那年，母亲将一枚蓝色水晶项链作为成人礼赠予他。然而，因故短暂离开母亲身边的澜默，
+          却等来了噩耗 —— 母亲在一次收尾人委托中遭遇意外，不幸丧生。
+          为了追寻母亲的足迹，也为了在这残酷的都市中生存，他正式踏入收尾人的行列。
+        </p>
+        <p>
+          他加入了「万川」—— 4协会附属事务所，勤恳地接下每一个委托，与事务所共同成长。
+          在万川，他结识了挚友<strong>宇耀</strong>。两人并肩作战，在无数次生死边缘结下了深厚的羁绊。
+        </p>
+        <p>
+          然而，命运的残酷并未停止。在一次针对「都市之星」的委托中，宇耀不幸战死。
+          临终前，他将随身的剑托付给了澜默。怀着撕心裂肺的悲痛，澜默孤身一人，
+          将那位名为「<strong>业火炎风</strong>」的都市之星彻底清理。
+        </p>
+        <p>
+          历经数年刀尖舔血的岁月，曾经的「万川」已蜕变为都市顶尖的存在。
+          而澜默，也凭借赫赫威名，被评定为色彩级收尾人 —— 「<span class="tag-bl">银灰轶影</span>」。
+        </p>
+        <div class="chips">
+          <span class="chip"><s></s>白发</span>
+          <span class="chip"><s></s>湛蓝双眸</span>
+          <span class="chip"><s></s>左颊疤痕</span>
+          <span class="chip"><s></s>三角巾</span>
+          <span class="chip"><s></s>蓝水晶项链</span>
+          <span class="chip"><s></s>银渐层 · 猫耳</span>
+        </div>
+      </div>
+
+      <dl class="kv rv" style="--d:.1s">
+        <div><dt>NAME</dt><dd>澜默<span class="sm">Lan Mo</span></dd></div>
+        <div><dt>SEX</dt><dd>男</dd></div>
+        <div><dt>RACE</dt><dd>银渐层（猫）<span class="sm">耳部生有黑银相间的绒毛</span></dd></div>
+        <div><dt>COLOR</dt><dd>银灰轶影<span class="sm">色彩级收尾人 · Color Fixer</span></dd></div>
+        <div><dt>OFFICE</dt><dd>万川<span class="sm">4协会附属事务所</span></dd></div>
+        <div><dt>WORKSHOP</dt><dd>祈源工坊<span class="sm">武装锻造来源</span></dd></div>
+        <div><dt>HAIR</dt><dd>白 · 近银</dd></div>
+        <div><dt>EYE</dt><dd>湛蓝</dd></div>
+        <div><dt>MARK</dt><dd>左脸颊 · 一道疤痕<span class="sm">常以三角巾遮掩</span></dd></div>
+        <div><dt>MEMENTO</dt><dd>蓝色水晶石项链<span class="sm">母亲赠予的成人礼</span></dd></div>
+        <div><dt>STATUS</dt><dd class="tag-bl">存活 · 在勤</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 APPEARANCE ===== -->
+<section id="appearance">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">SECTION 02 — APPEARANCE</span>形貌</h2>
+      <p class="note">形态切换将同步更新<br>本页所有立绘与光效</p>
+    </div>
+
+    <div class="rv" style="margin-bottom:clamp(30px,4vw,52px)">
+      <div class="toggle" id="tForm" data-n="2" data-i="0" role="tablist" aria-label="形态切换">
+        <span class="thumb"></span>
+        <button class="on" data-set-form="ordinary" role="tab">普通形态<em>ORDINARY</em></button>
+        <button data-set-form="ego" role="tab">神备形态<em>E.G.O.</em></button>
+      </div>
+      <p class="hint">// 神备显现时，疤痕随之消失</p>
+    </div>
+
+    <div class="appear">
+      <div class="plate rv" style="max-width:460px;margin:0">
+        <div class="plate-in"><img class="portrait-img ordinary" src="assets/portrait.png" alt="澜默 普通形态立绘" onerror="this.classList.add('missing')"><img class="portrait-img ego" src="assets/portrait-ego.png" alt="澜默 神备形态立绘" onerror="this.classList.add('missing')"><span class="ego-overlay" aria-hidden="true"></span><span class="ego-ring" aria-hidden="true"></span>
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <span class="plate-tag tl">PLATE <span class="num">02</span></span>
+          <span class="plate-tag br">REF.<br><span class="num" id="tagForm">ORDINARY</span></span>
+          <div class="plate-lbl">
+            <strong id="bigFormName">普通形态</strong>
+            <em id="bigFormEn">ORDINARY</em>
+          </div>
+          <!-- duplicate portrait (kept in sync by CSS state on <body>) -->
+          <svg class="figure" viewBox="0 0 420 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <use href="#portrait" width="420" height="560"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="rv" style="--d:.12s">
+        <div class="pane" id="pane" data-p="0">
+          <div>
+            <dl class="spec">
+              <div class="row"><dt>HAIR</dt><dd><b>白</b>（近银）</dd></div>
+              <div class="row"><dt>EARS</dt><dd>耳部生有 <b>黑银相间</b> 的绒毛</dd></div>
+              <div class="row"><dt>EYES</dt><dd><b>湛蓝</b>双眸</dd></div>
+              <div class="row"><dt>CHEEK</dt><dd>左脸颊留有一道 <b>醒目疤痕</b><span class="sm">常以一条三角巾遮掩</span></dd></div>
+              <div class="row"><dt>ATTIRE</dt><dd>纯白衬衫 · 黑色外衣 · 黑色短裤</dd></div>
+              <div class="row"><dt>NECKLACE</dt><dd><b>蓝色水晶石项链</b><span class="sm">母亲赠予的成人礼，也是她留下的最后念想</span></dd></div>
+              <div class="row"><dt>WEAPON</dt><dd>可变形为枪械的长剑<span class="sm">挚友宇耀的遗物 · 剑不离身</span></dd></div>
+            </dl>
+          </div>
+          <div>
+            <dl class="spec">
+              <div class="row"><dt>SCAR</dt><dd><b class="tag-bl">消失</b><span class="sm">面颊恢复至完好无缺</span></dd></div>
+              <div class="row"><dt>FACE</dt><dd>如入殓师修补逝者面容的手笔<span class="sm">抚平过往所有创伤与遗憾</span></dd></div>
+              <div class="row"><dt>AURA</dt><dd><b class="tag-bl">银灰之影</b> 凝于身周</dd></div>
+              <div class="row"><dt>EYES</dt><dd>湛蓝中透出微光</dd></div>
+              <div class="row"><dt>VEIL</dt><dd>三角巾卸下</dd></div>
+              <div class="row"><dt>NECKLACE</dt><dd>水晶仍在<span class="sm">亮度随之提升</span></dd></div>
+              <div class="row"><dt>NOTE</dt><dd>创伤与遗憾，皆被抚平</dd></div>
+            </dl>
+            <div class="egonote">
+              神备的降临，仿佛也 <b>抚平了他过往所有的创伤与遗憾</b>。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 PAST ===== -->
+<section id="past">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">SECTION 03 — REWIND</span>过往</h2>
+      <p class="note">从「巢」到「后巷」，<br>再到色彩级。共 12 条记录。</p>
+    </div>
+
+    <div class="tl" id="tl">
+      <span class="fill" id="tlFill"></span>
+
+      <article class="node l rv">
+        <div class="card"><span class="kk">REC 01</span><h3>巢</h3><p>生于「巢」中。尚未被世界记住，便已被遗弃。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node r rv">
+        <div class="card"><span class="kk">REC 02</span><h3>后巷</h3><p>流落至暗无天日的「后巷」，在没有光的角落里，活了下来。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node l rv">
+        <div class="card"><span class="kk">REC 03</span><h3>庇护</h3><p>一位善良的五阶收尾人收养了他。他第一次知道，什么叫做家。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node r hi rv">
+        <div class="card"><span class="kk">REC 04 · 18</span><h3>成人礼</h3><p>十八岁那年，母亲将一枚蓝色水晶项链作为成人礼赠予他 —— 那是她留下的最后念想。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node l rv">
+        <div class="card"><span class="kk">REC 05</span><h3>噩耗</h3><p>因故短暂离开母亲身边。等来的，却是她在一次收尾人委托中遭遇意外、不幸丧生的消息。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node r rv">
+        <div class="card"><span class="kk">REC 06</span><h3>入行</h3><p>为追寻母亲的足迹，也为在这残酷的都市中生存，他正式踏入收尾人的行列。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node l rv">
+        <div class="card"><span class="kk">REC 07</span><h3>万川</h3><p>加入「万川」—— 4协会附属事务所。勤恳地接下每一个委托，与事务所共同成长。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node r rv">
+        <div class="card"><span class="kk">REC 08</span><h3>挚友</h3><p>在万川结识宇耀。两人并肩作战，在无数次生死边缘结下了深厚的羁绊。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node l rv">
+        <div class="card"><span class="kk">REC 09</span><h3>星陨</h3><p>在一次针对「都市之星」的委托中，宇耀不幸战死。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node r hi rv">
+        <div class="card"><span class="kk">REC 10</span><h3>遗剑</h3><p>临终前，他将随身的剑托付给澜默。自那日起，剑不离身。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node l rv">
+        <div class="card"><span class="kk">REC 11</span><h3>清算</h3><p>怀着撕心裂肺的悲痛，澜默孤身一人，将那位名为「业火炎风」的都市之星彻底清理。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+
+      <article class="node r fin late rv">
+        <div class="card"><span class="kk">REC 12 · FINAL</span><h3>银灰轶影</h3><p>数年刀尖舔血。「万川」蜕变为都市顶尖的存在，而澜默凭借赫赫威名，被评定为色彩级收尾人。</p></div>
+        <div class="dotlin"><span class="d"></span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 SWORD ===== -->
+<section id="sword">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">SECTION 04 — ARMAMENT</span>遗剑</h2>
+      <p class="note">祈源工坊锻打 · 型号参考墨工坊<br>可于剑与铳之间变形</p>
+    </div>
+
+    <div class="sword-wrap">
+      <div class="sword-stage rv" id="stage" data-arm="0">
+        <div class="grid-bg"></div>
+        <div class="armtag">
+          <b id="armName">长剑形态</b>
+          <em id="armEn">BLADE MODE</em>
+        </div>
+        <div class="mono-cap rot">MODEL / <span class="redact">██████</span><br>ORIGIN / QIYUAN WORKSHOP</div>
+
+        <!-- 剑/枪立绘：把 assets/sword.png、assets/sword-gun.png 放进去即自动替换下方 SVG -->
+        <img class="arm-img blade" src="assets/sword.png" alt="长剑形态立绘" onerror="this.classList.add('missing')">
+        <img class="arm-img gun" src="assets/sword-gun.png" alt="枪械形态立绘" onerror="this.classList.add('missing')">
+
+        <div class="arm-svg">
+          <!-- BLADE -->
+          <svg class="st st-a" viewBox="0 0 660 200" aria-label="长剑形态">
+            <defs>
+              <linearGradient id="bladeG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f2f5f9"/><stop offset=".45" stop-color="#aab1bb"/><stop offset=".55" stop-color="#5f666f"/><stop offset="1" stop-color="#c9cfd7"/>
+              </linearGradient>
+              <linearGradient id="guardG" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#4c525a"/><stop offset="1" stop-color="#22262c"/>
+              </linearGradient>
+            </defs>
+            <g class="bp">
+              <!-- blade -->
+              <path d="M132 96 L556 90 L622 99 L556 108 L132 102 Z" fill="url(#bladeG)"/>
+              <path d="M140 99 L548 97" stroke="#1b1f24" stroke-width="1.6" opacity=".65"/>
+              <path d="M132 96 L556 90 L622 99" fill="none" stroke="#eef2f7" stroke-width=".9" opacity=".55"/>
+              <!-- guard -->
+              <path d="M112 76 C126 76 130 122 114 122 C100 122 96 76 112 76 Z" fill="url(#guardG)" stroke="#4a5058" stroke-width="1"/>
+              <rect x="126" y="80" width="12" height="38" fill="#2a2f36" stroke="#4a5058" stroke-width="1"/>
+              <!-- trigger hint (transform seam) -->
+              <rect x="138" y="112" width="26" height="7" rx="1" fill="#20242a" stroke="#464c55" stroke-width="1"/>
+              <!-- grip -->
+              <rect x="52" y="93" width="66" height="14" rx="3" fill="#1a1d22" stroke="#454b53" stroke-width="1"/>
+              <g stroke="#333941" stroke-width="1">
+                <line x1="62" y1="94" x2="58" y2="106"/><line x1="72" y1="94" x2="68" y2="106"/>
+                <line x1="82" y1="94" x2="78" y2="106"/><line x1="92" y1="94" x2="88" y2="106"/>
+                <line x1="102" y1="94" x2="98" y2="106"/>
+              </g>
+              <!-- pommel -->
+              <circle cx="48" cy="100" r="10" fill="#22262c" stroke="#4a5058" stroke-width="1.2"/>
+              <circle cx="48" cy="100" r="3.4" fill="#5f9fd8" opacity=".8"/>
+              <!-- caption -->
+              <text x="132" y="176" fill="#555b64" font-family="JetBrains Mono,Consolas,monospace" font-size="11" letter-spacing="3">LENGTH ██████ / EDGE — SERRATED-FOLD</text>
+            </g>
+          </svg>
+
+          <!-- GUN -->
+          <svg class="st st-b" viewBox="0 0 660 200" aria-label="枪械形态">
+            <defs>
+              <linearGradient id="gunG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3a4048"/><stop offset=".4" stop-color="#1b1f24"/><stop offset="1" stop-color="#0d1013"/>
+              </linearGradient>
+              <linearGradient id="barrelG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#c6ccd4"/><stop offset=".5" stop-color="#666d76"/><stop offset="1" stop-color="#9aa1ab"/>
+              </linearGradient>
+            </defs>
+            <g class="bp">
+              <!-- stock -->
+              <path d="M64 84 L196 82 L196 106 L64 108 C56 106 56 86 64 84 Z" fill="url(#gunG)" stroke="#4a5058" stroke-width="1"/>
+              <!-- receiver -->
+              <path d="M190 74 L392 72 L400 100 L388 124 L196 122 Z" fill="url(#gunG)" stroke="#4a5058" stroke-width="1"/>
+              <path d="M210 84 L370 82" stroke="#565d67" stroke-width="1.2" opacity=".8"/>
+              <!-- rail / scope -->
+              <rect x="236" y="60" width="120" height="12" rx="2" fill="#20242a" stroke="#4a5058" stroke-width="1"/>
+              <circle cx="296" cy="66" r="5" fill="#11151a" stroke="#6f7885" stroke-width="1"/>
+              <!-- folded blade ghost inside barrel -->
+              <path d="M300 92 L640 92 L648 98 L640 104 L300 104 Z" fill="url(#barrelG)" opacity=".92"/>
+              <path d="M312 98 L636 98" stroke="#181c21" stroke-width="1.3" opacity=".6"/>
+              <!-- muzzle -->
+              <rect x="640" y="86" width="16" height="24" rx="2" fill="#2a2f36" stroke="#5c636d" stroke-width="1"/>
+              <path d="M648 92 L652 98 L648 104" fill="none" stroke="#8fd0ff" stroke-width="1.4" opacity=".85"/>
+              <!-- grip -->
+              <path d="M214 118 L262 118 L246 178 L198 178 Z" fill="url(#gunG)" stroke="#4a5058" stroke-width="1"/>
+              <g stroke="#393f47" stroke-width="1"><line x1="220" y1="128" x2="252" y2="128"/><line x1="216" y1="142" x2="250" y2="142"/><line x1="212" y1="156" x2="246" y2="156"/></g>
+              <!-- trigger guard -->
+              <path d="M262 118 C282 118 288 148 268 152" fill="none" stroke="#4a5058" stroke-width="4"/>
+              <path d="M272 120 L278 146" stroke="#20242a" stroke-width="3.4"/>
+              <!-- mag/crystal cell -->
+              <rect x="330" y="120" width="34" height="44" rx="2" fill="#181c21" stroke="#4a5058" stroke-width="1"/>
+              <rect x="340" y="128" width="14" height="28" fill="#5f9fd8" opacity=".45"/>
+              <text x="196" y="176" fill="#555b64" font-family="JetBrains Mono,Consolas,monospace" font-size="11" letter-spacing="3">CAL ██████ / FEED — CRYSTAL CELL</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="rv" style="--d:.12s">
+        <div class="toggle" id="tArm" data-n="2" data-i="0" style="margin-bottom:26px">
+          <span class="thumb"></span>
+          <button class="on" data-set-arm="blade">剑形态<em>BLADE</em></button>
+          <button data-set-arm="gun">枪形态<em>FIREARM</em></button>
+        </div>
+        <dl class="spec">
+          <div class="row"><dt>FORGE</dt><dd><b>祈源工坊</b><span class="sm">打造的变形武装</span></dd></div>
+          <div class="row"><dt>FORM</dt><dd>长剑 <b>⇄</b> 枪械<span class="sm">可变形</span></dd></div>
+          <div class="row"><dt>MODEL</dt><dd>参考 <b>墨工坊</b></dd></div>
+          <div class="row"><dt>ORIGIN</dt><dd>挚友 <b>宇耀</b> 的遗物<span class="sm">临终托付</span></dd></div>
+          <div class="row"><dt>SINCE</dt><dd>自他离去那日起，剑不离身</dd></div>
+        </dl>
+        <div class="egonote" style="border-left-color:var(--brass);background:linear-gradient(90deg,rgba(194,164,104,.07),transparent)">
+          它不是凶器，是一句没说完的交代。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 EGO ===== -->
+<section id="ego">
+  <svg class="ego-rings" viewBox="0 0 800 800" aria-hidden="true">
+    <circle cx="400" cy="400" r="250"/><circle cx="400" cy="400" r="320"/>
+    <circle class="p" cx="400" cy="400" r="380" stroke="#5f9fd8"/>
+  </svg>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="shead rv" style="justify-content:center;text-align:center">
+      <h2 style="margin:0 auto"><span class="cn">SECTION 05 — E.G.O.</span>神备</h2>
+    </div>
+    <p class="ego-quote rv" style="--d:.08s">
+      神备显现之时，<br><em>疤痕随之消失。</em>
+    </p>
+    <p class="ego-sub rv" style="--d:.16s">
+      正如入殓师会将逝者的面容修补得完好无缺一般，神备的降临，
+      仿佛也抚平了他过往所有的创伤与遗憾。
+    </p>
+    <div class="pillars rv" style="--d:.22s">
+      <div><b>疤 · 消</b><i>THE SCAR FADES</i><p>左颊的裂痕被抹去，不留一丝痕迹。</p></div>
+      <div><b>面 · 全</b><i>THE FACE, WHOLE</i><p>如入殓师的手笔 —— 完好无缺，安宁如眠。</p></div>
+      <div><b>憾 · 平</b><i>REGRETS SETTLED</i><p>母亲、宇耀、后巷。那些没能说出口的，都被抚平。</p></div>
+    </div>
+    <div class="rv" style="--d:.3s;margin-top:clamp(40px,6vw,70px)">
+      <div class="toggle" id="tForm2" data-n="2" data-i="0" data-mirror></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="memo">
+      <h3 class="rv"><em>IN MEMORIAM</em>献予母亲 · 宇耀</h3>
+      <p class="rv" style="--d:.08s">
+        一条三角巾遮住左颊的疤，一枚蓝水晶压在衬衫之上，一把剑从未离身。<br>
+        澜默仍在接委托，仍在万川，仍在这座都市里。
+      </p>
+    </div>
+    <div class="fmeta">
+      <span>ARCHIVE NO. LM-000</span>
+      <span>COLOR FIXER · 银灰轶影</span>
+      <span>OFFICE 万川 / 4协会附属</span>
+      <span>剑不离身。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var body=document.body;
+
+  /* ---- form state ---- */
+  var FORM={ordinary:{cn:'普通形态',en:'ORDINARY'},ego:{cn:'神备形态',en:'E.G.O.'}};
+  function setForm(v){
+    body.dataset.form=v;
+    var f=FORM[v];
+    ['heroFormName','bigFormName'].forEach(function(id){var e=document.getElementById(id);if(e)e.textContent=f.cn;});
+    ['heroFormEn','bigFormEn'].forEach(function(id){var e=document.getElementById(id);if(e)e.textContent=f.en;});
+    var t=document.getElementById('tagForm'); if(t)t.textContent=f.en;
+    document.querySelectorAll('[data-set-form]').forEach(function(b){
+      var on=b.getAttribute('data-set-form')===v;
+      b.classList.toggle('on',on);
+      if(on) b.setAttribute('aria-selected','true'); else b.removeAttribute('aria-selected');
+    });
+    document.querySelectorAll('#tForm,#tForm2').forEach(function(tg){tg.dataset.i=(v==='ego')?'1':'0';});
+    var p=document.getElementById('pane'); if(p)p.dataset.p=(v==='ego')?'1':'0';
+    try{var u=new URL(location.href);u.searchParams.set('form',v);history.replaceState(null,'',u);}catch(e){}
+  }
+
+  /* ---- arm state ---- */
+  function setArm(v){
+    var s=document.getElementById('stage'); if(!s)return;
+    s.dataset.arm=(v==='gun')?'1':'0';
+    document.getElementById('armName').textContent=(v==='gun')?'枪械形态':'长剑形态';
+    document.getElementById('armEn').textContent=(v==='gun')?'FIREARM MODE':'BLADE MODE';
+    document.querySelectorAll('[data-set-arm]').forEach(function(b){
+      var on=b.getAttribute('data-set-arm')===v;
+      b.classList.toggle('on',on);
+      if(on)b.setAttribute('aria-selected','true');else b.removeAttribute('aria-selected');
+    });
+    var t=document.getElementById('tArm'); if(t)t.dataset.i=(v==='gun')?'1':'0';
+    try{var u2=new URL(location.href);u2.searchParams.set('arm',v);history.replaceState(null,'',u2);}catch(e){}
+  }
+
+  /* ---- mirror toggle in EGO section (clones the main one) ----
+     One delegated handler covers both the inline toggle and the cloned one. */
+  var t2=document.getElementById('tForm2'), t1=document.getElementById('tForm');
+  if(t2&&t1){ t2.innerHTML=t1.innerHTML; t2.dataset.n='2'; }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-set-form],[data-set-arm]');
+    if(!b)return;
+    if(b.hasAttribute('data-set-form')) setForm(b.getAttribute('data-set-form'));
+    else setArm(b.getAttribute('data-set-arm'));
+  });
+
+
+  /* ---- reveal ---- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e);});
+
+  /* timeline dot timing */
+  var io2=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.node').forEach(function(e){io2.observe(e);});
+
+  /* ---- nav + progress + rail ---- */
+  var links=[].slice.call(document.querySelectorAll('#nav a'));
+  var dots=[].slice.call(document.querySelectorAll('#rail .dot'));
+  var ids=['hero','profile','appearance','past','sword','ego'];
+  var bar=document.getElementById('bar'), pt=document.getElementById('pt'), tlFill=document.getElementById('tlFill');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||body.scrollTop;
+    var max=(h.scrollHeight-h.clientHeight)||1;
+    var pct=Math.min(1,Math.max(0,sc/max));
+    bar.style.width=(pct*100)+'%';
+    pt.textContent=String(Math.round(pct*100)).padStart(2,'0')+'%';
+    var cur=ids[0];
+    ids.forEach(function(id){
+      var el=document.getElementById(id); if(!el)return;
+      if(el.getBoundingClientRect().top<=h.clientHeight*0.42) cur=id;
+    });
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur);});
+    dots.forEach(function(d){d.classList.toggle('on',d.dataset.t==='#'+cur);});
+    if(tlFill){
+      var r=tlFill.parentElement.getBoundingClientRect();
+      var v=(h.clientHeight*0.5-r.top)/r.height;
+      tlFill.style.height=Math.min(1,Math.max(0,v))*100+'%';
+    }
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  onScroll();
+
+  /* ---- spotlight ---- */
+  var spot=document.getElementById('spot');
+  if(matchMedia('(pointer:fine)').matches){
+    addEventListener('mousemove',function(e){
+      spot.style.setProperty('--mx',e.clientX+'px');
+      spot.style.setProperty('--my',e.clientY+'px');
+    },{passive:true});
+  }
+
+  window.LM={setForm:setForm,setArm:setArm,FORM:FORM};
+
+  /* ---- shareable state: ?form=ego & arm=gun ---- */
+  var q=new URLSearchParams(location.search);
+  setForm(q.get('form')==='ego'?'ego':'ordinary');
+  setArm(q.get('arm')==='gun'?'gun':'blade');
+})();
+</script>
+</body>
+</html>

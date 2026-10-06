@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动态 / 帖子 ｜ POSTS</title>
+<meta name="description" content="随笔、进度与碎碎念。可点赞、可评论。">
+<meta name="theme-color" content="#07080a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Cpath d='M16 5 L27 16 L16 27 L5 16 Z' fill='none' stroke='%23a6d6ff' stroke-width='1.6'/%3E%3Cpath d='M16 9 L23 16 L16 23 L9 16 Z' fill='%235f9fd8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#07080a;--panel:#101317;--line:#21252b;--line2:#2e343c;
+  --txt:#c4cad2;--dim:#7b828c;--mute:#555b64;
+  --silver:#e2e7ee;--silver2:#98a0ab;--blue:#5f9fd8;--blue-lt:#a6d6ff;--brass:#c2a468;
+  --f-display:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif;
+  --f-sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --f-mono:"JetBrains Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--f-sans);font-weight:300;
+  font-size:16px;line-height:1.85;letter-spacing:.02em;overflow-x:hidden}
+::selection{background:rgba(95,159,216,.35);color:#fff}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;line-height:1.25}
+p{margin:0}
+svg{display:block}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:#08090b}
+::-webkit-scrollbar-thumb{background:#262b32;border:2px solid #08090b;border-radius:9px}
+.fx{position:fixed;inset:0;pointer-events:none;z-index:5}
+.fx-vig{background:radial-gradient(125% 95% at 50% 30%,transparent 46%,rgba(0,0,0,.58) 100%)}
+.fx-scan{opacity:.5;background:repeating-linear-gradient(180deg,rgba(255,255,255,.03) 0 1px,transparent 1px 4px)}
+.fx-gr{opacity:.05;mix-blend-mode:overlay}
+#bar{position:fixed;top:0;left:0;height:2px;z-index:60;background:linear-gradient(90deg,var(--silver2),var(--blue));width:0}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:24px;
+  padding:14px clamp(18px,4vw,54px);
+  background:linear-gradient(180deg,rgba(7,8,10,.92),rgba(7,8,10,.5) 70%,transparent);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.2em;color:var(--silver)}
+.mark i{width:9px;height:9px;background:var(--blue);box-shadow:0 0 12px var(--blue);transform:rotate(45deg)}
+.mark span{color:var(--mute)}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav a{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--dim);padding:7px 11px;border:1px solid transparent;transition:.35s}
+nav a:hover{color:var(--silver);border-color:var(--line2)}
+
+.wrap{max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+.page{padding:150px 0 clamp(60px,8vw,100px)}
+.head{margin-bottom:clamp(22px,3vw,32px)}
+.head .cn{font-family:var(--f-mono);font-size:11px;letter-spacing:.32em;color:var(--blue);display:block;margin-bottom:12px}
+.head h1{font-size:clamp(30px,5vw,50px);letter-spacing:.1em;color:var(--silver);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.head p{color:var(--dim);margin-top:16px;font-size:14.5px;max-width:64ch}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* ===== visibility switch ===== */
+.vismode{
+  border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.025),transparent);
+  padding:16px 18px;margin-bottom:clamp(20px,3vw,30px);display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.vismode .vm-lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;color:var(--silver2)}
+.seg{display:inline-flex;border:1px solid var(--line2);background:rgba(255,255,255,.02);position:relative;padding:3px}
+.seg .thumb{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);
+  background:linear-gradient(180deg,var(--silver),var(--silver2));transition:transform .45s cubic-bezier(.16,1,.3,1);z-index:1}
+.seg[data-i="1"] .thumb{transform:translateX(100%);background:linear-gradient(180deg,#dcefff,#8fc4f5);box-shadow:0 0 20px rgba(123,188,255,.45)}
+.seg button{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--dim);padding:8px 16px;
+  position:relative;z-index:2;transition:.35s;white-space:nowrap;cursor:pointer;background:none;border:0}
+.seg button em{font-style:normal;display:block;font-size:9px;letter-spacing:.16em;color:var(--mute);margin-top:2px}
+.seg button:hover{color:var(--silver)}
+.seg button.on{color:#07080a}
+.seg button.on em{color:rgba(7,8,10,.62)}
+.vm-note{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:var(--mute);margin-left:auto;max-width:44ch;line-height:1.9}
+.vm-note b{color:var(--blue-lt);font-weight:400}
+.vm-note.warn b{color:var(--brass)}
+
+/* ===== compose ===== */
+.compose{border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.022),transparent);margin-bottom:clamp(26px,4vw,42px)}
+.compose summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:12px;
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;color:var(--silver2);transition:.35s}
+.compose summary::-webkit-details-marker{display:none}
+.compose summary:hover{color:#fff;background:rgba(255,255,255,.02)}
+.compose summary .plus{width:20px;height:20px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--blue-lt)}
+.compose[open] summary{border-bottom:1px solid var(--line)}
+.compose .body{padding:18px 20px 20px}
+.compose input,.compose textarea{
+  width:100%;background:#0b0d11;border:1px solid var(--line2);color:var(--txt);font:inherit;font-size:14px;
+  padding:12px 14px;margin-bottom:12px;resize:vertical;outline:none;transition:.3s;border-radius:0}
+.compose input:focus,.compose textarea:focus{border-color:var(--blue);background:#0d1015}
+.compose .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;padding:12px 20px;border:1px solid var(--line2);
+  color:var(--silver2);background:rgba(255,255,255,.02);transition:.35s;cursor:pointer}
+.btn:hover{border-color:var(--blue);color:#fff;background:rgba(95,159,216,.1)}
+.btn.pri{background:linear-gradient(180deg,var(--silver),var(--silver2));color:#07080a;border-color:transparent}
+.btn.pri:hover{background:#fff}
+.hint{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--mute)}
+.err{color:#d98a8a;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;margin-top:8px}
+.gate{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--brass);
+  border:1px dashed rgba(194,164,104,.45);padding:11px 14px;background:rgba(194,164,104,.05)}
+
+/* ===== feed ===== */
+.feed{display:flex;flex-direction:column;gap:clamp(18px,2.6vw,28px)}
+.post{border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.02),transparent);
+  padding:clamp(20px,3vw,30px);position:relative;transition:.45s}
+.post:hover{border-color:var(--line2)}
+.post.mine{border-color:rgba(95,159,216,.42);background:linear-gradient(160deg,rgba(95,159,216,.07),transparent)}
+.pmeta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.pmeta .ttl{font-family:var(--f-display);font-size:clamp(19px,2.6vw,24px);color:var(--silver);letter-spacing:.06em}
+.pmeta .date{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;color:var(--mute);margin-left:auto}
+.tag{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;color:var(--blue-lt);border:1px solid rgba(95,159,216,.4);
+  padding:3px 8px;background:rgba(95,159,216,.07)}
+.tag.mine{color:var(--brass);border-color:rgba(194,164,104,.45);background:rgba(194,164,104,.07)}
+.pbody{color:var(--dim);font-size:15px}
+.pbody p+p{margin-top:12px}
+.pbody a{color:var(--blue-lt);border-bottom:1px solid rgba(95,159,216,.4)}
+
+.actions{display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap}
+.act{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;
+  color:var(--dim);border:1px solid var(--line2);padding:7px 13px;transition:.3s;cursor:pointer;background:rgba(255,255,255,.02)}
+.act:hover{color:#fff;border-color:var(--line2);background:rgba(255,255,255,.05)}
+.act svg{width:14px;height:14px}
+.act.liked{color:#ff8f8f;border-color:rgba(217,138,138,.55);background:rgba(217,138,138,.1)}
+.act.liked svg{fill:currentColor}
+.act.ghost{margin-left:auto;border-color:transparent;background:none}
+.act.ghost:hover{border-color:var(--line2)}
+.del{color:#9a6a6a}
+.del:hover{color:#ff9a9a;border-color:rgba(217,138,138,.5)}
+.act.gh{color:var(--blue-lt);border-color:rgba(95,159,216,.4);background:rgba(95,159,216,.07)}
+
+/* ===== thread ===== */
+.cwrap{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)}
+.post.open .cwrap{max-height:6000px}
+.cinner{padding-top:18px;margin-top:18px;border-top:1px dashed var(--line2)}
+.clist{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
+.citem{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.av{width:34px;height:34px;border:1px solid var(--line2);display:grid;place-items:center;
+  font-family:var(--f-mono);font-size:12px;color:var(--silver2);background:#0d1015}
+.citem .cn{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.citem .nm{font-size:13.5px;color:var(--silver2)}
+.citem .dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--mute)}
+.citem .tx{font-size:14px;color:var(--dim);margin-top:3px;white-space:pre-wrap;word-break:break-word}
+.citem .cdel{font-family:var(--f-mono);font-size:10px;color:var(--mute);border:0;background:none;cursor:pointer;padding:0}
+.citem .cdel:hover{color:#ff9a9a}
+.cempty{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--mute);padding:4px 0 14px}
+.cform{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.cform .fields{display:flex;flex-direction:column;gap:9px}
+.cform input,.cform textarea{width:100%;background:#0b0d11;border:1px solid var(--line2);color:var(--txt);
+  font:inherit;font-size:13.5px;padding:10px 12px;resize:vertical;outline:none;transition:.3s}
+.cform input:focus,.cform textarea:focus{border-color:var(--blue);background:#0d1015}
+.cform .cbtn{align-self:flex-start}
+.gbox{border:1px solid var(--line);background:#0a0c0f;padding:6px;min-height:60px}
+.gbox .giscus,.gbox .giscus-frame{width:100%;border:0}
+.gnotice{border:1px dashed var(--line2);padding:20px;color:var(--dim);font-size:13.5px}
+.gnotice b{color:var(--brass);font-weight:400}
+.gnotice ol{margin:12px 0 0;padding-left:20px;color:var(--mute);font-size:12.5px;font-family:var(--f-mono);letter-spacing:.04em}
+.gnotice li{margin:5px 0}
+.gnotice code{color:var(--blue-lt);background:rgba(95,159,216,.1);padding:1px 5px}
+.gload{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--mute);padding:14px}
+
+.empty{border:1px dashed var(--line2);padding:34px;text-align:center;color:var(--mute);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em}
+footer{border-top:1px solid var(--line);margin-top:clamp(50px,7vw,80px);padding:30px 0}
+.fmeta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.fmeta span,.fmeta a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--mute)}
+.fmeta a:hover{color:var(--silver2)}
+@media (max-width:620px){
+  .topbar{padding:11px 16px;gap:12px}
+  nav a{padding:6px 8px;font-size:10px}
+  .page{padding-top:120px}
+  .pmeta .date{margin-left:0}
+  .vismode .vm-lbl{width:100%}
+  .vm-note{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a id="bar"></a>
+<div class="fx fx-vig"></div><div class="fx fx-scan"></div>
+<svg class="fx fx-gr" aria-hidden="true"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg>
+
+<header class="topbar">
+  <a class="mark" href="index.html"><i></i>POSTS <span>/ 动态</span></a>
+  <nav>
+    <a href="index.html"><b>&larr;</b>主页</a>
+    <a href="lanmo.html">澜默档案</a>
+    <a href="index.html#links">链接</a>
+  </nav>
+</header>
+
+<main class="wrap page">
+  <div class="head rv">
+    <span class="cn">MODULE 02 — POSTS</span>
+    <h1>动态 <span class="hint">/ POSTS &amp; NOTES</span></h1>
+    <p>
+      随笔、进度、碎碎念。评论有两种模式，用下面的开关切换：
+      <b style="color:var(--silver2);font-weight:400">仅本机可见</b> 用浏览器 localStorage（快、免配置、但别人看不到）；
+      <b style="color:var(--silver2);font-weight:400">所有人可见</b> 用 Giscus，把评论与点赞存进你的 GitHub Discussions。
+    </p>
+  </div>
+
+  <!-- ===== 可见性开关 ===== -->
+  <div class="vismode rv" id="visMode">
+    <span class="vm-lbl">评论可见性</span>
+    <div class="seg" id="vmSeg" data-i="0">
+      <span class="thumb"></span>
+      <button data-mode="local" class="on">仅本机可见<em>LOCAL</em></button>
+      <button data-mode="public">所有人可见<em>GISCUS</em></button>
+    </div>
+    <span class="vm-note" id="vmNote"></span>
+  </div>
+
+  <!--
+    ============ 怎么发帖 ============
+    在下面 <div class="feed" id="feed"> 里复制一个 <article class="post"> 块，
+    改 data-id（唯一字符串）、data-date、data-tags、标题与正文即可。
+      · data-id  必填且唯一。它同时是「本机赞/评论」的键，和 Giscus 讨论串的 term
+                 （公开模式下会以 lm-post-<data-id> 作为讨论标题）。改了 id，
+                 该帖已积累的赞、评论、GitHub reaction 都会归到新串。
+      · data-date 任意文字，仅展示
+      · data-tags 逗号分隔
+    保存刷新即可，无需重新构建。
+  -->
+  <section class="feed" id="feed" aria-label="帖子列表">
+
+    <article class="post rv" data-id="first-post" data-date="2026-09-02" data-tags="建站,随笔">
+      <div class="pmeta">
+        <span class="ttl">建站与第一篇</span>
+        <span class="tag">建站</span><span class="tag">随笔</span>
+        <span class="date">2026-09-02</span>
+      </div>
+      <div class="pbody">
+        <p>把个人主页和澜默的档案整理出来了：主页做外壳，澜默的自我介绍单独成一个子模块。</p>
+        <p>这里以后就用来放些进度和碎碎念 —— 写完刷新就能看到。</p>
+      </div>
+    </article>
+
+    <article class="post rv" data-id="wheat-mod" data-date="2026-08-27" data-tags="模组,Minecraft,进度">
+      <div class="pmeta">
+        <span class="ttl">模组进度 · 收尾中</span>
+        <span class="tag">模组</span><span class="tag">进度</span>
+        <span class="date">2026-08-27</span>
+      </div>
+      <div class="pbody">
+        <p>Forge 模组在清最后的 bug 列表了。整合包和服务器版本也打包好了，等测试过一遍再放出来。</p>
+      </div>
+    </article>
+
+    <article class="post rv" data-id="algo-note" data-date="2026-08-29" data-tags="算法,学习">
+      <div class="pmeta">
+        <span class="ttl">算法训练记录</span>
+        <span class="tag">算法</span><span class="tag">学习</span>
+        <span class="date">2026-08-29</span>
+      </div>
+      <div class="pbody">
+        <p>把基础算法、数据结构、杂项算法的思维导图重新梳理了一遍，之后按图刷题。</p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- 本机发布（localStorage）；公开模式下请改源码加帖子 -->
+  <details class="compose rv" id="compose">
+    <summary><span class="plus">+</span><span id="composeLbl">我要发一条（仅本机可见）</span></summary>
+    <div class="body">
+      <div id="composeGate" style="display:none;margin-bottom:14px" class="gate">
+        当前是「所有人可见」模式：Giscus 的帖子来自源码，不能从这里发布。此处只能发一条仅你自己可见的记录。
+      </div>
+      <input id="pName" maxlength="40" placeholder="你的昵称（可留空，默认 匿名）" autocomplete="off">
+      <input id="pTitle" maxlength="80" placeholder="标题（可留空）" autocomplete="off">
+      <textarea id="pText" rows="5" maxlength="2000" placeholder="正文……"></textarea>
+      <div class="row">
+        <button class="btn pri" id="pSubmit">发布到本机</button>
+        <button class="btn" id="pClear">清空我的发布</button>
+        <span class="hint" id="pCount"></span>
+      </div>
+      <div class="err" id="pErr" role="alert"></div>
+    </div>
+  </details>
+
+  <footer>
+    <div class="fmeta">
+      <span id="modeFoot">LOCAL MODE · 数据存在本机 localStorage</span>
+      <a href="index.html">← 返回主页</a>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     Giscus 配置（公开模式必需）
+     ------------------------------------------------------------
+     填好下面 4 个值，「所有人可见」模式即可生效：
+       1) 建一个【公开】GitHub 仓库
+       2) 仓库 Settings → General → Features → 勾选 Discussions
+       3) 安装 Giscus App：https://github.com/apps/giscus
+       4) 打开 https://giscus.app ，填仓库，复制下面 4 个值
+     注意：Giscus 需要 http(s) 环境；用 file:// 直接打开不生效。
+     ============================================================ */
+  var GISCUS = {
+    repo:       "Equation1337/site-comments",
+    repoId:     "R_kgDOU9ZmFA",
+    category:   "Announcements",
+    categoryId: "DIC_kwDOU9ZmFM4DHIaT",
+    reactions:  "1",                // 1 = 开启 reaction（点赞即 GitHub reaction）
+    lang:       "zh-CN",
+    theme:      "dark_dimmed",      // 也可改 "transparent_dark" / "dark"
+    inputPosition: "top"
+  };
+  function giscusConfigured(){
+    return !!(GISCUS.repo && GISCUS.repoId && GISCUS.category && GISCUS.categoryId);
+  }
+
+  /* ---------- 存储 ---------- */
+  var LS="lm_posts_v1", LS_MODE="lm_posts_mode_v1", LS_RX="lm_giscus_rx_v1";
+  function jload(k,fb){ try{ return JSON.parse(localStorage.getItem(k))||fb; }catch(e){ return fb; } }
+  function jsave(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+  var db=jload(LS,{likes:{},comments:{},posts:[]});
+  var rxCache=jload(LS_RX,{});                       // 公开模式：缓存 giscus 的 reaction / 评论数
+  var state={mode:jload(LS_MODE,{m:"local"}).m==="public"?"public":"local"};
+
+  function uid(){ return 'u'+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(m){
+    return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
+  function now(){ var d=new Date(); function p(n){return (n<10?'0':'')+n;}
+    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes()); }
+  function initials(n){ n=(n||'匿').trim(); return esc(n.slice(0,2)); }
+  function hashStr(s){ var h=0; for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return h; }
+  function localLikes(pid){ return 1+(hashStr(pid)%23)+(db.likes[pid]?1:0); }
+
+  var HEART='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg>';
+  var CHAT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4z"/></svg>';
+  var GH='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>';
+
+  /* ---------- 收集帖子 ---------- */
+  var feed=document.getElementById('feed');
+  var posts=[];
+  function collectStatic(){
+    [].slice.call(feed.querySelectorAll('.post:not(.mine)')).forEach(function(el,i){
+      posts.push({el:el, id:el.getAttribute('data-id')||('static'+i), mine:false});
+    });
+  }
+
+  var byId={};
+  function reg(p){
+    byId[p.id]=p;
+    p.el.classList.remove('open');
+    p.el.querySelectorAll('.actions,.cwrap').forEach(function(e){e.remove();});
+    var acts=document.createElement('div');
+    acts.className='actions';
+    var cmtLabel = '<span class="lab">评论</span>';
+    acts.innerHTML=
+      '<button class="act like" type="button">'+HEART+'<span class="lab">赞</span><span class="n">0</span></button>'+
+      '<button class="act cmt" type="button">'+CHAT+cmtLabel+'<span class="n">0</span></button>'+
+      (p.mine?'<button class="act ghost del" type="button">删除</button>':'');
+    var wrap=document.createElement('div');
+    wrap.className='cwrap';
+    wrap.innerHTML='<div class="cinner"><div class="clist"></div><div class="cslot"></div></div>';
+    p.el.appendChild(acts); p.el.appendChild(wrap);
+    p.acts=acts; p.wrap=wrap;
+    p.likeBtn=acts.querySelector('.like'); p.likeN=p.likeBtn.querySelector('.n'); p.likeLab=p.likeBtn.querySelector('.lab');
+    p.cmtBtn=acts.querySelector('.cmt'); p.cmtN=p.cmtBtn.querySelector('.n');
+    p.clist=wrap.querySelector('.clist'); p.cslot=wrap.querySelector('.cslot');
+    p.gLoaded=false; p.gbox=null;
+
+    p.likeBtn.addEventListener('click',bindLikeHandler(p));
+    p.cmtBtn.addEventListener('click',function(){
+      p.el.classList.toggle('open');
+      if(p.el.classList.contains('open')){
+        if(state.mode==='public') loadGiscus(p);
+        var ta=p.cslot.querySelector('textarea'); if(ta) setTimeout(function(){ta.focus();},300);
+      }
+    });
+    if(p.mine){
+      acts.querySelector('.del').addEventListener('click',function(){
+        if(!confirm('删除这条帖子？'))return;
+        db.posts=(db.posts||[]).filter(function(x){return x.id!==p.id;});
+        delete db.comments[p.id]; delete db.likes[p.id]; jsave(LS,db);
+        delete byId[p.id]; posts=posts.filter(function(x){return x!==p;}); p.el.remove();
+      });
+    }
+    renderThread(p);
+    updateLikeUI(p);
+    updateCmtUI(p);
+  }
+
+  /* ---------- 点赞 ---------- */
+  function bindLikeHandler(p){
+    return function(e){
+      e.preventDefault();
+      if(state.mode==='local'){
+        db.likes[p.id]=!db.likes[p.id]; jsave(LS,db); updateLikeUI(p);
+      }else{
+        if(!p.el.classList.contains('open') || !p.gLoaded){
+          p.el.classList.add('open'); loadGiscus(p);
+          setTimeout(function(){ p.wrap.scrollIntoView({behavior:'smooth',block:'center'}); },140);
+        }
+      }
+    };
+  }
+  function updateLikeUI(p){
+    if(state.mode==='local'){
+      p.likeBtn.classList.remove('gh');
+      p.likeBtn.classList.toggle('liked',!!db.likes[p.id]);
+      p.likeLab.textContent='赞';
+      p.likeN.textContent=localLikes(p.id);
+      p.likeBtn.title='本机点赞（只有你自己看得到）';
+    }else{
+      p.likeBtn.classList.remove('liked');
+      p.likeBtn.classList.add('gh');
+      p.likeLab.textContent='GitHub 反应';
+      var c=rxCache[p.id];
+      p.likeN.textContent=(c&&typeof c.reactions==='number')?c.reactions:'–';
+      p.likeBtn.title='点击打开讨论串，用 GitHub reaction 点赞';
+    }
+  }
+  function updateCmtUI(p){
+    if(state.mode==='local'){
+      p.cmtN.textContent=((db.comments[p.id]||[]).length);
+      p.cmtBtn.title='本机评论（只有你自己看得到）';
+    }else{
+      var c=rxCache[p.id];
+      p.cmtN.textContent=(c&&typeof c.comments==='number')?c.comments:'–';
+      p.cmtBtn.title='GitHub Discussions 评论（所有人可见）';
+    }
+  }
+
+  /* ---------- 讨论区渲染 ---------- */
+  function renderThread(p){
+    if(state.mode==='local') renderLocal(p);
+    else renderPublic(p);
+  }
+
+  function renderLocal(p){
+    p.cslot.dataset.ready='';
+    p.gbox=null;
+    var list=(db.comments[p.id]||[]);
+    if(!list.length){ p.clist.innerHTML='<div class="cempty">还没有评论，来说点什么。</div>'; }
+    else{
+      p.clist.innerHTML=list.map(function(c){
+        return '<div class="citem"><div class="av">'+initials(c.name)+'</div><div>'+
+          '<div class="cn"><span class="nm">'+esc(c.name||'匿名')+'</span>'+
+          '<span class="dt">'+esc(c.date)+'</span>'+
+          '<button class="cdel" data-cid="'+esc(c.id)+'">删除</button></div>'+
+          '<div class="tx">'+esc(c.text)+'</div></div></div>';
+      }).join('');
+      [].slice.call(p.clist.querySelectorAll('.cdel')).forEach(function(b){
+        b.addEventListener('click',function(){
+          if(!confirm('删除这条评论？'))return;
+          db.comments[p.id]=(db.comments[p.id]||[]).filter(function(c){return c.id!==b.getAttribute('data-cid');});
+          jsave(LS,db); renderLocal(p); updateCmtUI(p);
+        });
+      });
+    }
+    p.cslot.innerHTML=
+      '<div class="cform"><div class="av">你</div><div class="fields">'+
+      '<input class="cnm" maxlength="40" placeholder="昵称（可留空）">'+
+      '<textarea class="ctx" rows="2" maxlength="1000" placeholder="写下评论……（Ctrl/⌘ + Enter 发送）"></textarea>'+
+      '<button class="btn cbtn" type="button">发表评论</button></div></div>';
+    var nmI=p.cslot.querySelector('.cnm'), txI=p.cslot.querySelector('.ctx');
+    function submit(){
+      var t=txI.value.trim(); if(!t){ txI.focus(); return; }
+      (db.comments[p.id]=db.comments[p.id]||[]).push({id:uid(), name:(nmI.value.trim()||'匿名'), text:t, date:now()});
+      jsave(LS,db); txI.value=''; renderLocal(p); updateCmtUI(p);
+      var ta=p.cslot.querySelector('.ctx'); if(ta) ta.focus();
+    }
+    p.cslot.querySelector('.cbtn').addEventListener('click',submit);
+    txI.addEventListener('keydown',function(e){ if((e.ctrlKey||e.metaKey)&&e.key==='Enter') submit(); });
+  }
+
+  function renderPublic(p){
+    p.clist.innerHTML='';
+    if(!giscusConfigured()){
+      p.cslot.innerHTML=
+        '<div class="gnotice"><b>尚未配置 Giscus。</b>公开评论需要先接通 GitHub，四步：'+
+        '<ol>'+
+        '<li>建一个 <code>公开</code> GitHub 仓库</li>'+
+        '<li>仓库 Settings → General → Features → 勾选 <code>Discussions</code></li>'+
+        '<li>安装 Giscus App：<code>github.com/apps/giscus</code></li>'+
+        '<li>打开 <code>giscus.app</code> 填入仓库，把 4 个值粘到本页 <code>GISCUS</code> 配置</li>'+
+        '</ol></div>';
+      return;
+    }
+    if(location.protocol==='file:'){
+      p.cslot.innerHTML=
+        '<div class="gnotice"><b>Giscus 不能在 file:// 下运行。</b>'+
+        '请用本地服务器或部署后再打开，例如：<ol><li>在站点文件夹执行 <code>python -m http.server 8080</code></li>'+
+        '<li>访问 <code>http://127.0.0.1:8080/posts.html</code></li></ol></div>';
+      return;
+    }
+    p.cslot.innerHTML='<div class="gbox"><div class="gload">正在连接 GitHub Discussions…（展开后加载）</div></div>';
+    p.gbox=p.cslot.querySelector('.gbox');
+    if(p.el.classList.contains('open')) loadGiscus(p);
+  }
+
+  function loadGiscus(p){
+    if(p.gLoaded || !p.gbox) return;
+    if(!giscusConfigured() || location.protocol==='file:') return;
+    p.gLoaded=true;
+    gPending.push(p.id);                            // term 缺失时的兜底映射
+    p.gbox.innerHTML='';
+    var s=document.createElement('script');
+    s.src='https://giscus.app/client.js';
+    s.async=true; s.crossOrigin='anonymous';
+    s.setAttribute('data-repo',GISCUS.repo);
+    s.setAttribute('data-repo-id',GISCUS.repoId);
+    s.setAttribute('data-category',GISCUS.category);
+    s.setAttribute('data-category-id',GISCUS.categoryId);
+    s.setAttribute('data-mapping','specific');
+    s.setAttribute('data-term','lm-post-'+p.id);   // 每个帖子一个独立讨论串
+    s.setAttribute('data-strict','0');
+    s.setAttribute('data-reactions-enabled',GISCUS.reactions);
+    s.setAttribute('data-emit-metadata','1');      // 让我们能读到 reaction / 评论数
+    s.setAttribute('data-input-position',GISCUS.inputPosition);
+    s.setAttribute('data-theme',GISCUS.theme);
+    s.setAttribute('data-lang',GISCUS.lang);
+    s.setAttribute('data-loading','lazy');
+    p.gbox.appendChild(s);
+  }
+
+  /* ---------- 接收 Giscus 元数据：把 reaction 数同步到「点赞」 ---------- */
+  var gPending=[];
+  window.addEventListener('message',function(e){
+    if(e.origin!=='https://giscus.app') return;
+    var d=e.data; if(!d||!d.giscus) return;
+    var disc=d.giscus.discussion; if(!disc) return;
+    var term=d.giscus.term||'';
+    var pid=term.indexOf('lm-post-')===0?term.slice(8):'';
+    var p=pid&&byId[pid];
+    if(!p && gPending.length===1) p=byId[gPending[0]];
+    if(!p) return;
+    gPending=gPending.filter(function(x){return x!==p.id;});
+    rxCache[p.id]={
+      reactions:(disc.reactions&&typeof disc.reactions.totalCount==='number')?disc.reactions.totalCount:0,
+      comments:(typeof disc.totalCommentCount==='number')?disc.totalCommentCount:0
+    };
+    jsave(LS_RX,rxCache); updateLikeUI(p); updateCmtUI(p);
+  });
+
+  /* ---------- 本机发布的帖子 ---------- */
+  function renderMine(){
+    [].slice.call(feed.querySelectorAll('.post.mine')).forEach(function(e){e.remove();});
+    posts.filter(function(p){return p.mine;}).forEach(function(p){ delete byId[p.id]; });
+    posts=posts.filter(function(p){return !p.mine;});
+    (db.posts||[]).forEach(function(rec){
+      var el=document.createElement('article');
+      el.className='post mine';
+      el.setAttribute('data-id',rec.id);
+      el.innerHTML='<div class="pmeta"><span class="ttl">'+esc(rec.title||'（无标题）')+'</span>'+
+        '<span class="tag mine">我的发布</span><span class="date">'+esc(rec.date)+'</span></div>'+
+        '<div class="pbody">'+esc(rec.text).split('\n').map(function(l){return '<p>'+l+'</p>';}).join('')+'</div>';
+      feed.appendChild(el);
+      var p={el:el, id:rec.id, mine:true}; posts.push(p); reg(p);
+    });
+    document.getElementById('pCount').textContent='已发布 '+((db.posts||[]).length)+' 条（本机）';
+  }
+
+  /* ---------- 模式切换 ---------- */
+  var seg=document.getElementById('vmSeg'), vmNote=document.getElementById('vmNote');
+  function paintMode(){
+    seg.dataset.i=(state.mode==='public')?'1':'0';
+    [].slice.call(seg.querySelectorAll('button')).forEach(function(b){
+      b.classList.toggle('on',b.getAttribute('data-mode')===state.mode);
+    });
+    var g=document.getElementById('composeGate'), lb=document.getElementById('composeLbl'),
+        ft=document.getElementById('modeFoot');
+    if(state.mode==='public'){
+      lb.textContent='我要发一条（仅本机可见）';
+      g.style.display='block';
+      vmNote.className='vm-note';
+      if(!giscusConfigured()){
+        vmNote.className='vm-note warn';
+        vmNote.innerHTML='公开模式已开，但 <b>Giscus 尚未配置</b> —— 展开任意帖子的评论可见配置步骤。';
+      }else if(location.protocol==='file:'){
+        vmNote.className='vm-note warn';
+        vmNote.innerHTML='公开模式已开，但当前是 <b>file:// 环境</b>，Giscus 无法运行。请用本地服务器打开。';
+      }else{
+        vmNote.innerHTML='评论与点赞存于 <b>GitHub Discussions</b>，所有人可见。';
+      }
+      ft.textContent='GISCUS MODE · 评论与 reaction 存于 GitHub Discussions';
+    }else{
+      lb.textContent='我要发一条（仅本机可见）';
+      g.style.display='none';
+      vmNote.className='vm-note';
+      vmNote.innerHTML='点赞与评论只存在你自己的浏览器里，<b>别人看不到</b>。';
+      ft.textContent='LOCAL MODE · 数据存在本机 localStorage';
+    }
+  }
+  seg.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('button[data-mode]'); if(!b) return;
+    var m=b.getAttribute('data-mode'); if(m===state.mode) return;
+    state.mode=m; jsave(LS_MODE,{m:m});
+    paintMode();
+    posts.forEach(function(p){ renderThread(p); updateLikeUI(p); updateCmtUI(p); });
+  });
+
+  /* ---------- 发布表单 ---------- */
+  var pName=document.getElementById('pName'), pTitle=document.getElementById('pTitle'),
+      pText=document.getElementById('pText'), pErr=document.getElementById('pErr');
+  document.getElementById('pSubmit').addEventListener('click',function(){
+    var t=pText.value.trim();
+    if(!t){ pErr.textContent='正文不能为空。'; pText.focus(); return; }
+    pErr.textContent='';
+    db.posts=db.posts||[];
+    db.posts.unshift({id:uid(), title:pTitle.value.trim(), text:t, name:pName.value.trim()||'匿名', date:now()});
+    jsave(LS,db);
+    pTitle.value=''; pText.value='';
+    renderMine(); paintMode();
+    document.getElementById('compose').open=false;
+  });
+  document.getElementById('pClear').addEventListener('click',function(){
+    var mine=(db.posts||[]).map(function(p){return p.id;});
+    if(!mine.length){ pErr.textContent='本机还没有你发布的帖子。'; return; }
+    if(!confirm('清空本机发布的 '+mine.length+' 条帖子及其评论？（静态帖子不受影响）'))return;
+    db.posts=[]; mine.forEach(function(id){delete db.comments[id];delete db.likes[id];});
+    jsave(LS,db); pErr.textContent=''; renderMine(); paintMode();
+  });
+
+  /* ---------- 滚动条 ---------- */
+  var bar=document.getElementById('bar');
+  addEventListener('scroll',function(){
+    var h=document.documentElement,sc=h.scrollTop||document.body.scrollTop;
+    bar.style.width=Math.min(1,sc/((h.scrollHeight-h.clientHeight)||1))*100+'%';
+  },{passive:true});
+
+  /* ---------- 启动 ---------- */
+  collectStatic();
+  posts.forEach(function(p){ reg(p); });
+  renderMine();
+  paintMode();
+
+  /* ---------- 入场动效 ---------- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>

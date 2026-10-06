@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ▼▼ 改这里：站点标题 ▼▼ -->
+<title>个人主页 ｜ HOME</title>
+<!-- ▲▲ 改这里 ▲▲ -->
+<meta name="description" content="个人主页：身份、方向、项目与作品档案。">
+<meta name="theme-color" content="#07080a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Cpath d='M16 5 L27 16 L16 27 L5 16 Z' fill='none' stroke='%23a6d6ff' stroke-width='1.6'/%3E%3Cpath d='M16 9 L23 16 L16 23 L9 16 Z' fill='%235f9fd8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#07080a;--panel:#101317;--line:#21252b;--line2:#2e343c;
+  --txt:#c4cad2;--dim:#7b828c;--mute:#555b64;
+  --silver:#e2e7ee;--silver2:#98a0ab;--blue:#5f9fd8;--blue-lt:#a6d6ff;--brass:#c2a468;
+  --f-display:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif;
+  --f-sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --f-mono:"JetBrains Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--txt);font-family:var(--f-sans);font-weight:300;
+  font-size:16px;line-height:1.85;letter-spacing:.02em;overflow-x:hidden;
+}
+::selection{background:rgba(95,159,216,.35);color:#fff}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;line-height:1.25}
+p{margin:0}
+svg{display:block}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:#08090b}
+::-webkit-scrollbar-thumb{background:#262b32;border:2px solid #08090b;border-radius:9px}
+::-webkit-scrollbar-thumb:hover{background:#39414b}
+
+.fx{position:fixed;inset:0;pointer-events:none;z-index:5}
+.fx-vig{background:radial-gradient(125% 95% at 50% 34%,transparent 44%,rgba(0,0,0,.6) 100%)}
+.fx-scan{opacity:.5;background:repeating-linear-gradient(180deg,rgba(255,255,255,.03) 0 1px,transparent 1px 4px)}
+.fx-gr{opacity:.05;mix-blend-mode:overlay}
+
+#bar{position:fixed;top:0;left:0;height:2px;z-index:60;background:linear-gradient(90deg,var(--silver2),var(--blue));width:0}
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:24px;
+  padding:14px clamp(18px,4vw,54px);
+  background:linear-gradient(180deg,rgba(7,8,10,.92),rgba(7,8,10,.5) 70%,transparent);
+  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.2em;color:var(--silver)}
+.mark i{width:9px;height:9px;background:var(--blue);box-shadow:0 0 12px var(--blue);transform:rotate(45deg)}
+.mark span{color:var(--mute)}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav a{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--dim);padding:7px 11px;border:1px solid transparent;transition:.35s}
+nav a:hover{color:var(--silver);border-color:var(--line2)}
+nav a.on{color:var(--silver);border-color:var(--line2);background:rgba(255,255,255,.03)}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+section{position:relative;padding:clamp(70px,9vw,120px) 0}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.3em;color:var(--mute);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--line2)}
+.shead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(30px,4vw,52px)}
+.shead h2{font-size:clamp(28px,4.2vw,46px);letter-spacing:.1em;color:var(--silver)}
+.shead .cn{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.32em;color:var(--blue);margin-bottom:12px;font-weight:400}
+.shead .note{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--mute);text-align:right;line-height:2}
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* hero */
+#hero{min-height:100svh;display:flex;align-items:center;padding-top:130px;padding-bottom:70px}
+.hgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,60px);align-items:center;width:100%}
+.badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line2);padding:6px 14px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--silver2);margin-bottom:26px}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue)}
+h1.name{
+  font-size:clamp(44px,8vw,104px);line-height:1.02;letter-spacing:.06em;margin-bottom:8px;
+  background:linear-gradient(166deg,#fff 0%,#dfe4ea 34%,#8d949e 74%,#5b616a 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.romaji{font-family:var(--f-mono);font-size:12px;letter-spacing:.56em;color:var(--mute);margin-bottom:26px}
+.lede{color:var(--dim);max-width:44ch;font-size:15.5px}
+.lede b{color:var(--silver2);font-weight:400}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;padding:13px 22px;border:1px solid var(--line2);
+  color:var(--silver2);transition:.35s;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.02);
+}
+.btn:hover{border-color:var(--blue);color:#fff;background:rgba(95,159,216,.1)}
+.btn.pri{background:linear-gradient(180deg,var(--silver),var(--silver2));color:#07080a;border-color:transparent}
+.btn.pri:hover{background:linear-gradient(180deg,#fff,var(--silver))}
+.btn s{width:5px;height:5px;background:var(--blue);display:block;text-decoration:none}
+
+.avat{position:relative;width:100%;max-width:400px;aspect-ratio:1/1;margin-left:auto;
+  border:1px solid var(--line);background:radial-gradient(70% 55% at 50% 40%,rgba(95,159,216,.12),transparent 70%),linear-gradient(170deg,#12151a,#08090b)}
+.avat .corner{position:absolute;width:15px;height:15px;border:1px solid var(--line2)}
+.avat .corner.tl{top:9px;left:9px;border-right:0;border-bottom:0}
+.avat .corner.tr{top:9px;right:9px;border-left:0;border-bottom:0}
+.avat .corner.bl{bottom:9px;left:9px;border-right:0;border-top:0}
+.avat .corner.br{bottom:9px;right:9px;border-left:0;border-top:0}
+.avat svg{position:absolute;inset:0;width:100%;height:100%}
+.avat .tag{position:absolute;left:20px;bottom:18px;z-index:4}
+.avat .tag b{display:block;font-family:var(--f-display);font-size:20px;color:var(--silver);letter-spacing:.1em}
+.avat .tag em{font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--mute)}
+
+/* modules */
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.mod{background:var(--bg);padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;gap:12px;min-height:210px;transition:.45s;position:relative}
+.mod:hover{background:#0c0f13}
+.mod .no{font-family:var(--f-mono);font-size:10px;letter-spacing:.24em;color:var(--mute)}
+.mod h3{font-size:21px;color:var(--silver);letter-spacing:.1em}
+.mod p{color:var(--dim);font-size:13.8px;flex:1}
+.mod .go{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;color:var(--blue-lt)}
+.mod:hover .go{color:#fff}
+.mod.feat{grid-column:span 2;background:linear-gradient(150deg,rgba(95,159,216,.09),transparent 60%),var(--bg);border-left:2px solid var(--blue)}
+.mod.feat h3{font-size:clamp(24px,3vw,32px)}
+.mod.feat p{max-width:52ch}
+.mod.dim{opacity:.72}
+.mod.dim:hover{opacity:1}
+@media (max-width:980px){.mods{grid-template-columns:1fr 1fr}.mod.feat{grid-column:span 2}}
+@media (max-width:640px){.mods{grid-template-columns:1fr}.mod.feat{grid-column:span 1}}
+
+/* about */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,64px);align-items:start}
+.bio p{color:var(--dim)}
+.bio p+p{margin-top:16px}
+.bio .lead{font-family:var(--f-display);font-size:clamp(18px,2.1vw,23px);color:var(--silver2);line-height:1.85}
+.bio strong{color:var(--silver);font-weight:400;border-bottom:1px solid var(--line2)}
+.kv{border-top:1px solid var(--line)}
+.kv div{display:grid;grid-template-columns:104px 1fr;gap:18px;padding:14px 2px;border-bottom:1px solid var(--line)}
+.kv dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;color:var(--mute);padding-top:5px}
+.kv dd{margin:0;color:var(--txt);font-size:14.6px}
+.kv dd .sm{display:block;font-size:12.5px;color:var(--mute);margin-top:3px}
+.ph{color:var(--brass);border-bottom:1px dashed rgba(194,164,104,.5)}
+@media (max-width:980px){.two{grid-template-columns:1fr}}
+
+/* focus cards */
+.focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.fcard{background:var(--bg);padding:26px 24px;transition:.4s}
+.fcard:hover{background:#0c0f13}
+.fcard b{display:block;font-family:var(--f-display);font-size:19px;color:var(--silver);letter-spacing:.08em;margin-bottom:8px}
+.fcard i{font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--blue);display:block;margin-bottom:10px}
+.fcard p{color:var(--mute);font-size:13.4px}
+
+/* links */
+.lgroup{font-family:var(--f-display);font-size:20px;color:var(--silver);letter-spacing:.1em;margin-bottom:16px}
+.lgroup span{font-family:var(--f-mono);font-size:10px;letter-spacing:.22em;color:var(--mute);font-weight:400}
+.linklist{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+.link{display:grid;grid-template-columns:44px 1fr 22px;gap:14px;align-items:center;
+  background:var(--bg);padding:15px 18px;transition:.35s}
+.link:hover{background:#0c0f13}
+.lk-ic{width:44px;height:44px;border:1px solid var(--line2);display:grid;place-items:center;
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;color:var(--silver2);transition:.35s}
+.link:hover .lk-ic{border-color:var(--blue);color:var(--blue-lt);background:rgba(95,159,216,.08)}
+.lk-b{display:flex;flex-direction:column;gap:2px;min-width:0}
+.lk-b b{font-size:15px;color:var(--silver);font-weight:400}
+.lk-b em{font-style:normal;font-family:var(--f-mono);font-size:11px;color:var(--mute);overflow-wrap:anywhere}
+.lk-go{font-family:var(--f-mono);color:var(--mute);transition:.35s;text-align:right}
+.link:hover .lk-go{color:var(--blue-lt);transform:translateX(3px)}
+.lk-note{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--mute);margin-top:14px}
+
+footer{border-top:1px solid var(--line);padding:clamp(50px,7vw,84px) 0 54px}
+.fmeta{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.fmeta span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;color:var(--mute)}
+.fmeta a:hover{color:var(--silver2)}
+
+@media (max-width:900px){
+  .hgrid{grid-template-columns:1fr}
+  .avat{margin:0 auto}
+  .shead .note{text-align:left}
+}
+@media (max-width:600px){
+  .topbar{padding:11px 16px;gap:12px}
+  nav a{padding:6px 8px;font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a id="bar"></a>
+<div class="fx fx-vig"></div>
+<div class="fx fx-scan"></div>
+<svg class="fx fx-gr" aria-hidden="true"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg>
+
+<header class="topbar">
+  <!-- ▼ 改成你的名字/标识 -->
+  <a class="mark" href="#hero"><i></i>YOUR NAME <span>/ 个人主页</span></a>
+  <nav id="nav">
+    <a href="#hero">主页</a>
+    <a href="#modules">模块</a>
+    <a href="#about">关于</a>
+    <a href="#focus">方向</a>
+    <a href="#links">链接</a>
+    <a href="posts.html">动态</a>
+    <a href="lanmo.html">澜默档案</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="wrap hgrid">
+    <div>
+      <div class="badge rv"><i></i>PERSONAL SITE · EST. 2026</div>
+      <!-- ▼▼ 改成你的名字（中文） ▼▼ -->
+      <h1 class="name rv" style="--d:.06s">你的名字</h1>
+      <!-- · 拼音 / 英文名 / 常用 ID -->
+      <div class="romaji rv" style="--d:.1s">Y O U R &nbsp; N A M E</div>
+      <p class="lede rv" style="--d:.16s">
+        学生 · 算法与数据结构方向。平时写 C++、做点 Minecraft 模组，
+        也折腾 Blender、Photoshop 和桌面美化。<br><br>
+        这里放我的方向、项目和自述；其中
+        <b>「澜默 · 银灰轶影」</b>是我的自我介绍档案。
+      </p>
+      <div class="cta rv" style="--d:.22s">
+        <a class="btn pri" href="lanmo.html"><s></s>进入澜默档案</a>
+        <a class="btn" href="#about">关于我 →</a>
+      </div>
+    </div>
+
+    <div class="avat rv" style="--d:.16s">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <!-- 头像：把 assets/avatar.png 放进去就会自动替换下面这个占位图形 -->
+      <img src="assets/avatar.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3"
+           onerror="this.remove()">
+      <svg viewBox="0 0 400 400" aria-hidden="true">
+        <defs>
+          <radialGradient id="ag" cx=".5" cy=".42" r=".6">
+            <stop offset="0" stop-color="#7bbcff" stop-opacity=".35"/><stop offset="1" stop-color="#7bbcff" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="ai" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e2e7ee"/><stop offset="1" stop-color="#6f7885"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="400" fill="none"/>
+        <circle cx="200" cy="180" r="150" fill="url(#ag)"/>
+        <circle cx="200" cy="180" r="118" fill="none" stroke="#2e343c"/>
+        <circle cx="200" cy="180" r="88" fill="none" stroke="#2e343c" stroke-dasharray="2 10"/>
+        <path d="M200 96 L284 180 L200 264 L116 180 Z" fill="url(#ai)" opacity=".9"/>
+        <path d="M200 122 L258 180 L200 238 L142 180 Z" fill="#07080a"/>
+        <path d="M200 150 L200 210 M170 180 L230 180" stroke="#5f9fd8" stroke-width="2"/>
+        <text x="200" y="330" text-anchor="middle" fill="#555b64" font-family="JetBrains Mono,monospace" font-size="12" letter-spacing="4">AVATAR / 400&#215;400</text>
+      </svg>
+      <div class="tag">
+        <!-- ▼ 改成你的自称 / 身份 -->
+        <b>你的名字</b><em>STUDENT / DEVELOPER</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULES ===== -->
+<section id="modules" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">MODULES / 模块</span>站点导航</h2>
+      <p class="note">每个模块独立成页<br>方便单独修改</p>
+    </div>
+    <div class="mods">
+      <!-- 澜默：你给的自我介绍，作为主模块 -->
+      <a class="mod feat rv" href="lanmo.html">
+        <span class="no">01 · 自我介绍 / PROFILE</span>
+        <h3>澜默 · 银灰轶影</h3>
+        <p>色彩级收尾人档案 —— 形貌、过往、遗剑「祈源工坊」与神备。含形态切换（普通 ⇄ 神备）与武器变形演示。</p>
+        <span class="go">进入子模块 →</span>
+      </a>
+
+      <!-- 动态 / 帖子：可点赞、可评论 -->
+      <a class="mod rv" href="posts.html" style="--d:.06s">
+        <span class="no">02 · POSTS</span>
+        <h3>动态 / 帖子</h3>
+        <p>随笔、进度、碎碎念。可点赞、可评论。<span class="ph">（在源码里加一条即发帖）</span></p>
+        <span class="go">进入子模块 →</span>
+      </a>
+
+      <!-- 以下为占位模块，按需删改 -->
+      <a class="mod rv" href="#about" style="--d:.12s">
+        <span class="no">03 · ABOUT</span><h3>关于我</h3>
+        <p>身份、方向、最近在做的事。</p><span class="go">查看 →</span>
+      </a>
+      <a class="mod dim rv" href="#focus" style="--d:.18s">
+        <span class="no">04 · FOCUS</span><h3>方向与兴趣</h3>
+        <p>算法、游戏开发、3D / 图像。<span class="ph">（待补充）</span></p><span class="go">查看 →</span>
+      </a>
+      <a class="mod rv" href="#links" style="--d:.24s">
+        <span class="no">05 · LINKS</span><h3>链接</h3>
+        <p>友情链接与我的个人链接。<span class="ph">（在源码里替换）</span></p><span class="go">查看 →</span>
+      </a>
+      <a class="mod dim rv" href="#focus" style="--d:.3s">
+        <span class="no">06 · WORKS</span><h3>项目 / 作品</h3>
+        <p><span class="ph">占位：放你的项目、Mod、代码仓库。</span></p><span class="go">查看 →</span>
+      </a>
+      <a class="mod dim rv" href="#contact" style="--d:.36s">
+        <span class="no">07 · CONTACT</span><h3>联系</h3>
+        <p><span class="ph">占位：邮箱、GitHub、其他社交。</span></p><span class="go">查看 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">ABOUT / 关于</span>关于我</h2>
+      <p class="note">下面内容为初稿<br>请按实际情况修改</p>
+    </div>
+    <div class="two">
+      <div class="bio rv">
+        <p class="lead">
+          你好，我是 <span class="ph">你的名字</span>。
+        </p>
+        <p>
+          目前在读，主攻 <strong>计算机</strong> 相关方向，日常沉浸在算法与数据结构的训练里 ——
+          从基础算法、数据结构到杂项算法，习惯用 <strong>C++</strong> 把想法写成能跑的东西。
+        </p>
+        <p>
+          课余会做 <strong>Minecraft 模组开发</strong>（Forge 生态），也喜欢用
+          <strong>Blender</strong> 和 <strong>Photoshop</strong> 做点三维与图像，
+          以及把桌面和笔记系统（Obsidian、Rainmeter 之类）调成顺手的样子。
+        </p>
+        <p>
+          另外我是 <strong>Project Moon</strong> 世界观的爱好者 ——
+          「澜默」就是我在这个世界里为自己留下的档案，也是我放在这个站里的自我介绍。
+        </p>
+      </div>
+      <dl class="kv rv" style="--d:.08s">
+        <!-- ▼ 逐行改成你的信息；不需要的行直接删掉 -->
+        <div><dt>NAME</dt><dd><span class="ph">你的名字</span><span class="sm">待填写</span></dd></div>
+        <div><dt>FOCUS</dt><dd>算法 / 数据结构<span class="sm">C++ 训练中</span></dd></div>
+        <div><dt>STAGE</dt><dd>在读<span class="sm">大学</span></dd></div>
+        <div><dt>LIKES</dt><dd>游戏开发 · 3D / 图像 · 桌面美化</dd></div>
+        <div><dt>FANDOM</dt><dd>Project Moon<span class="sm">澜默所在的世界观</span></dd></div>
+        <div><dt>CONTACT</dt><dd><span class="ph">待填写</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOCUS ===== -->
+<section id="focus" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">FOCUS / 方向</span>方向与兴趣</h2>
+      <p class="note">以下为占位内容<br>可自由增删</p>
+    </div>
+    <div class="focus">
+      <div class="fcard rv"><i>ALGORITHM</i><b>算法与数据结构</b><p>基础算法、数据结构、杂项算法的系统训练；以竞赛与刷题为主线。</p></div>
+      <div class="fcard rv" style="--d:.06s"><i>GAME DEV</i><b>游戏 / 模组开发</b><p>Minecraft Forge 模组，从玩法原型到完整整合包。</p></div>
+      <div class="fcard rv" style="--d:.12s"><i>3D / IMAGE</i><b>三维与图像</b><p>Blender 建模与渲染、Photoshop 图像处理与视觉表达。</p></div>
+      <div class="fcard rv" style="--d:.18s"><i>FANDOM</i><b>Project Moon</b><p>世界观设定与角色创作；「澜默」即其一的角色档案。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LINKS ===== -->
+<section id="links" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead rv">
+      <h2><span class="cn">LINKS / 链接</span>链接</h2>
+      <p class="note">删掉不用的行即可<br>href 填完整网址</p>
+    </div>
+    <div class="two">
+      <div class="rv">
+        <h3 class="lgroup">友情链接 <span>/ FRIENDS</span></h3>
+        <!-- ▼ 友情链接：复制下面一整块 <a class="link"> 增删；href 换成对方网址 -->
+        <div class="linklist">
+          <a class="link" href="#" target="_blank" rel="noopener">
+            <span class="lk-ic">友</span>
+            <span class="lk-b"><b><span class="ph">友链站点名称</span></b><em>一句话简介 / 说明</em></span>
+            <span class="lk-go">→</span>
+          </a>
+          <a class="link" href="#" target="_blank" rel="noopener">
+            <span class="lk-ic">友</span>
+            <span class="lk-b"><b><span class="ph">友链站点名称</span></b><em>一句话简介 / 说明</em></span>
+            <span class="lk-go">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="rv" style="--d:.08s">
+        <h3 class="lgroup">个人链接 <span>/ MINE</span></h3>
+        <div class="linklist">
+          <!-- ▼ 个人链接：换成你的真实主页/仓库/社交 -->
+          <a class="link" href="#" target="_blank" rel="noopener">
+            <span class="lk-ic">GH</span>
+            <span class="lk-b"><b>GitHub</b><em><span class="ph">github.com/你的用户名</span></em></span>
+            <span class="lk-go">→</span>
+          </a>
+          <a class="link" href="#" target="_blank" rel="noopener">
+            <span class="lk-ic">B</span>
+            <span class="lk-b"><b>Bilibili</b><em><span class="ph">space.bilibili.com/你的UID</span></em></span>
+            <span class="lk-go">→</span>
+          </a>
+          <a class="link" href="#" target="_blank" rel="noopener">
+            <span class="lk-ic">@</span>
+            <span class="lk-b"><b>邮箱</b><em><span class="ph">you@example.com</span></em></span>
+            <span class="lk-go">→</span>
+          </a>
+          <a class="link" href="#" target="_blank" rel="noopener">
+            <span class="lk-ic">◎</span>
+            <span class="lk-b"><b>个人博客 / 其他</b><em><span class="ph">待填写</span></em></span>
+            <span class="lk-go">→</span>
+          </a>
+        </div>
+        <p class="lk-note">交换友链？把站点名和网址告诉我，我加进来。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fmeta">
+      <span>&copy; 2026 <span class="ph">YOUR NAME</span></span>
+      <span>MODULES — 06</span>
+      <span><a href="lanmo.html">澜默 · 银灰轶影 →</a></span>
+      <span><a href="posts.html">动态 / 帖子 →</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  var nav=[].slice.call(document.querySelectorAll('#nav a')).filter(function(a){return a.getAttribute('href')[0]==='#';});
+  var ids=nav.map(function(a){return a.getAttribute('href').slice(1);});
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=(h.scrollHeight-h.clientHeight)||1;
+    bar.style.width=Math.min(1,sc/max)*100+'%';
+    var cur=ids[0];
+    ids.forEach(function(id){var e=document.getElementById(id);
+      if(e&&e.getBoundingClientRect().top<=h.clientHeight*0.42)cur=id;});
+    nav.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur);});
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>
