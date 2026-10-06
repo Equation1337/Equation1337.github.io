@@ -84,31 +84,47 @@ Blender / Photoshop、Project Moon），请按实际情况删改，不必照单�
 打开讨论串用 GitHub reaction 点赞；评论数会自动读取讨论串的真实评论数。
 模式选择记在 localStorage，刷新后保持。
 
-### 接通「所有人可见」（四步，一次性）
+### 接通「所有人可见」（已为你配置完成 ✅）
 
-1. 建一个 **公开** GitHub 仓库（放评论用，可以单独建一个，比如 `my-site-comments`）。
-2. 该仓库 **Settings → General → Features → 勾选 Discussions**。
-3. 安装 Giscus App：<https://github.com/apps/giscus> ，授权给它刚建的仓库。
-4. 打开 <https://giscus.app> ，在页面里填仓库名，它会给出 4 个值；
-   把这 4 个值粘进 `posts.html` 里的 `GISCUS` 配置：
+**已经接好了，无需再操作。** 具体配置如下，供你日后参考或迁移：
+
+| 项目 | 值 |
+| --- | --- |
+| 线上地址 | <https://equation1337.github.io/> |
+| 评论存储仓库 | <https://github.com/Equation1337/site-comments>（公开） |
+| Discussions 分类 | `Announcements` |
+| 已建讨论串 | `lm-post-first-post`(#1)、`lm-post-wheat-mod`(#2)、`lm-post-algo-note`(#3) |
+| Giscus App | 已安装，仅授权 `site-comments` 仓库 |
+
+`posts.html` 里已填好的 4 个值：
 
 ```js
 var GISCUS = {
-  repo:       "你的用户名/仓库名",   // 例 "alice/my-site-comments"
-  repoId:     "R_kgD...",           // giscus.app 给出
-  category:   "Announcements",      // 你在该仓库 Discussions 建/选一个分类
-  categoryId: "DIC_kwD...",         // giscus.app 给出
-  reactions:  "1",                  // 1 = 开 reaction（点赞即 GitHub reaction）
+  repo:       "Equation1337/site-comments",
+  repoId:     "R_kgDOU9ZmFA",
+  category:   "Announcements",
+  categoryId: "DIC_kwDOU9ZmFM4DHIaT",
+  reactions:  "1",          // 1 = 开 reaction（点赞即 GitHub reaction）
   lang:       "zh-CN",
   theme:      "dark_dimmed",
   inputPosition: "top"
 };
 ```
 
-**重要：Giscus 需要 `http(s)` 环境，用 `file://` 直接双击打开不生效。**
-本地预览请用 `python -m http.server 8080` 后访问 `http://127.0.0.1:8080/posts.html`；
-部署到 GitHub Pages / Vercel 等之后就正常。配置没填或环境不对时，
-展开评论会显示对应的**操作指引**而不是空白。
+**如果要换成别的仓库**（比如想用你自己的另一个仓库）：
+
+1. 建一个 **公开** GitHub 仓库；该仓库 **Settings → General → Features → 勾选 Discussions**。
+2. 安装 Giscus App：<https://github.com/apps/giscus> ，授权给它。
+3. 打开 <https://giscus.app> 填仓库名，拿 4 个值，替换 `posts.html` 里的 `GISCUS` 配置。
+
+**重要：Giscus 需要 `http(s)` 环境。** 线上（GitHub Pages）正常；
+本地预览用 `python -m http.server 8080` 后访问 `http://127.0.0.1:8080/posts.html`；
+**双击 `file://` 打开时不生效**（此时展开评论会显示操作指引而不是空白）。
+
+### 新增帖子后，讨论串会自动创建
+
+Giscus 会在访客第一次展开某帖评论、或你首次进入该帖讨论区时**自动创建**对应的 GitHub 讨论串；
+我预先建好了现有 3 条帖的讨论串，所以可直接打开。新帖无需手动建。
 
 ### 每篇帖子 = 一个独立讨论串
 
